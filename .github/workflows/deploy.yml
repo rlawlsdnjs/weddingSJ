@@ -7,7 +7,7 @@ on:
 
 permissions:
     contents: write # 저장소 컨텐츠에 대한 쓰기 권한
-    workflows: write # 워크플로우에 대한 쓰기 권한
+    actions: write # GitHub Actions에 대한 쓰기 권한
 
 jobs:
     deploy:

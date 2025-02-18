@@ -6,12 +6,19 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // crypto 모듈을 crypto-browserify로 대체
       crypto: 'crypto-browserify',
+      stream: 'stream-browserify',
+      assert: 'assert',
+      path: 'path-browserify',
+      fs: 'fs-web',
     },
   },
   define: {
-    // process.env.NODE_ENV나 global 객체를 사용하려면 이렇게 설정해줍니다
-    global: {},
+    global: 'window',  // 'global'을 'window'로 설정해줍니다.
+    process: {
+      env: {
+        NODE_ENV: '"production"',
+      },
+    },
   },
 })

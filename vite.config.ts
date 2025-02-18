@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   define: {
-    global: 'window',  // 'global'을 'window'로 설정해줍니다.
+    global: 'window', // 'global'을 'window'로 설정
     process: {
       env: {
         NODE_ENV: '"production"',

@@ -6,9 +6,8 @@ on:
             - main
 
 permissions:
-    contents: write # 컨텐츠를 수정할 수 있도록 설정
-    id-token: write # OIDC 토큰을 사용하려면 이 권한도 필요할 수 있음
-    workflows: write # 워크플로우를 업데이트할 수 있도록 설정
+    contents: write # 저장소 컨텐츠에 대한 쓰기 권한
+    workflows: write # 워크플로우에 대한 쓰기 권한
 
 jobs:
     deploy:
@@ -31,5 +30,5 @@ jobs:
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }} # PAT 토큰을 여기서 사용
                   publish_dir: ./dist

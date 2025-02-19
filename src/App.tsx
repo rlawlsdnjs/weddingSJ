@@ -105,7 +105,7 @@ const App = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     className="intro-content">
-                    <h1>Photo Gallery</h1>
+                    <h1>배포 Gallery</h1>
                     <p>
                         Scroll down to explore our stunning collection of
                         photographs

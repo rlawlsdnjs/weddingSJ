@@ -58,6 +58,10 @@ export const projects: Project[] = [
     },
 ];
 
+const clamp = (min: number, max: number, value: number) => {
+    return Math.min(max, Math.max(min, value));
+};
+
 const App = () => {
     const container = useRef<HTMLDivElement>(null);
     const introSection = useRef<HTMLDivElement>(null);
@@ -138,7 +142,7 @@ const App = () => {
                             key={`p_${i}`}
                             i={i}
                             {...project}
-                            progress={scrollYProgress}
+                            progress={clamp(0, 1, scrollYProgress.get())}
                             range={[i * 0.25, 1]}
                             targetScale={targetScale}
                             isVisible={hasScrolledPastIntro}

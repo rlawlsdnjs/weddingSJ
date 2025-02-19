@@ -52,7 +52,7 @@ const Card: React.FC<CardProps> = ({
                 animate={
                     isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }
                 }
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0, delay: i * 0.1 }}
                 className="card">
                 <h2>{title}</h2>
                 <div className="body">

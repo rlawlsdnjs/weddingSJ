@@ -133,7 +133,8 @@ const App = () => {
             {/* 카드 섹션 */}
             <main ref={container} className="main-container">
                 {projects.map((project, i) => {
-                    const targetScale = 1 - (projects.length - i) * 0.05;
+                    const scaleFactor = 0.04; // 스케일 감소 폭을 줄임 (기존 0.05 → 0.02)
+                    const targetScale = 1 - (projects.length - i) * scaleFactor;
                     return (
                         <Card
                             key={`p_${i}`}

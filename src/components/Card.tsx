@@ -48,9 +48,9 @@ const Card: React.FC<CardProps> = ({
                     scale, // 이 값은 scrollYProgress나 다른 상태에 따라 다르게 설정될 수 있음
                     top: `calc(-5vh + ${i * 20}px)`,
                 }}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 1, y: 50 }}
                 animate={
-                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 50 }
                 }
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="card">

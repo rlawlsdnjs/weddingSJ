@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useScroll, motion } from "framer-motion";
+import { useMotionValueEvent, useMotionValue } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import Card from "./components/Card";
 import "./App.css";
@@ -12,7 +13,9 @@ interface Project {
     link: string;
     color: string;
 }
-
+const clamp = (min: number, max: number, value: number) => {
+    return Math.min(max, Math.max(min, value));
+};
 // 프로젝트 배열
 export const projects: Project[] = [
     {
@@ -58,10 +61,6 @@ export const projects: Project[] = [
     },
 ];
 
-const clamp = (min: number, max: number, value: number) => {
-    return Math.min(max, Math.max(min, value));
-};
-
 const App = () => {
     const container = useRef<HTMLDivElement>(null);
     const introSection = useRef<HTMLDivElement>(null);
@@ -75,18 +74,20 @@ const App = () => {
     // 인트로 섹션 지나갔는지 확인하기 위한 상태
     const [hasScrolledPastIntro, setHasScrolledPastIntro] = useState(false);
 
-    const [scrollProgress, setScrollProgress] = useState(0);
-
     useEffect(() => {
         const lenis = new Lenis();
 
-        lenis.on("scroll", ({ scroll }) => {
-            // 현재 스크롤 위치를 progress 값으로 변환
-            const maxScroll =
-                document.documentElement.scrollHeight - window.innerHeight;
-            setScrollProgress(scroll / maxScroll);
-        });
+        const handleScroll = () => {
+            if (introSection.current) {
+                const introRect = introSection.current.getBoundingClientRect();
+                // 인트로 섹션이 화면을 벗어났을 때 상태를 true로 변경
+                setHasScrolledPastIntro(introRect.bottom <= 0);
+            }
+        };
 
+        window.addEventListener("scroll", handleScroll);
+
+        // Lenis 스크롤 설정
         const raf = (time: number) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -94,10 +95,17 @@ const App = () => {
         requestAnimationFrame(raf);
 
         return () => {
-            lenis.destroy();
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
+    const boundedProgress = useMotionValue(0);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        boundedProgress.set(Math.min(1, Math.max(0, latest)));
+    });
+
+    console.log(boundedProgress);
     return (
         <div className="app-container">
             {/* 인트로 섹션 */}
@@ -142,7 +150,7 @@ const App = () => {
                             key={`p_${i}`}
                             i={i}
                             {...project}
-                            progress={clamp(0, 1, scrollYProgress.get())}
+                            progress={boundedProgress}
                             range={[i * 0.25, 1]}
                             targetScale={targetScale}
                             isVisible={hasScrolledPastIntro}

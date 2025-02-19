@@ -71,20 +71,18 @@ const App = () => {
     // 인트로 섹션 지나갔는지 확인하기 위한 상태
     const [hasScrolledPastIntro, setHasScrolledPastIntro] = useState(false);
 
+    const [scrollProgress, setScrollProgress] = useState(0);
+
     useEffect(() => {
         const lenis = new Lenis();
 
-        const handleScroll = () => {
-            if (introSection.current) {
-                const introRect = introSection.current.getBoundingClientRect();
-                // 인트로 섹션이 화면을 벗어났을 때 상태를 true로 변경
-                setHasScrolledPastIntro(introRect.bottom <= 0);
-            }
-        };
+        lenis.on("scroll", ({ scroll }) => {
+            // 현재 스크롤 위치를 progress 값으로 변환
+            const maxScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+            setScrollProgress(scroll / maxScroll);
+        });
 
-        window.addEventListener("scroll", handleScroll);
-
-        // Lenis 스크롤 설정
         const raf = (time: number) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -92,7 +90,7 @@ const App = () => {
         requestAnimationFrame(raf);
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            lenis.destroy();
         };
     }, []);
 

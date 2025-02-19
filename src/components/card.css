@@ -21,6 +21,8 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
   overflow-y: auto;
   transition: opacity 0.5s ease, transform 0.5s ease;
+  transform-origin: center top;
+  will-change: transform;
 }
 
 .card h2 {

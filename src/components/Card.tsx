@@ -1,32 +1,150 @@
 import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef } from "react";
-import "./card.css";
+import { ReactNode, useRef } from "react";
+import styled from "styled-components";
 
-// Card 컴포넌트 Props 타입 정의
+// Props types
 interface CardProps {
-    i: number; // 카드 인덱스
-    title: string; // 카드 제목
-    description: string; // 카드 설명
-    src: string; // 이미지 소스 (파일명)
-    link?: string; // 카드 상세 URL
-    color: string; // 배경 색상
-    progress: any; // 스크롤 진행상태 (useScroll에서 받은 값)
-    range: [number, number]; // 스케일 범위
-    targetScale: number; // 타겟 스케일 값
-    isVisible: boolean; // 카드 표시 여부
+    i: number;
+    title: string;
+    color: string;
+    progress: any;
+    range: [number, number];
+    targetScale: number;
+    isVisible: boolean;
+    childrenNode?: ReactNode;
 }
+
+// Styled Components
+const CardContainer = styled.div<{ isVisible: boolean }>`
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0px;
+    transition: visibility 0.3s ease;
+`;
+
+const StyledCard = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    height: 85vh;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    transform-origin: center top;
+    will-change: transform;
+
+    @media (max-width: 768px) {
+        width: 90%;
+        height: 80vh;
+        padding: 15px;
+    }
+`;
+
+const CardTitle = styled.h2`
+    text-align: center;
+    margin: 0;
+    font-size: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: "Parisienne", cursive;
+    color: #000;
+    @media (max-width: 768px) {
+        font-size: 30px;
+    }
+`;
+
+const CardBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 60px);
+    gap: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    justify-content: center;
+`;
+
+const Description = styled.div`
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+
+        &::first-letter {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+
+            &::first-letter {
+                font-size: 22px;
+            }
+        }
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 15px;
+
+        a {
+            font-size: 16px;
+            text-decoration: underline;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+`;
+
+const ImageContainer = styled.div`
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+`;
+
+const Inner = styled(motion.div)`
+    width: 100%;
+    height: 100%;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`;
 
 const Card: React.FC<CardProps> = ({
     i,
     title,
-    description,
-    src,
-    link,
     color,
     progress,
     range,
     targetScale,
     isVisible,
+    childrenNode,
 }) => {
     const container = useRef(null);
 
@@ -39,56 +157,27 @@ const Card: React.FC<CardProps> = ({
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div
-            ref={container}
-            className={`cardContainer ${isVisible ? "visible" : "hidden"}`}>
-            <motion.div
+        <CardContainer ref={container} isVisible={isVisible}>
+            <StyledCard
                 style={{
                     backgroundColor: color,
-                    scale, // 이 값은 scrollYProgress나 다른 상태에 따라 다르게 설정될 수 있음
-                    top: `calc(-5vh + ${i * 20}px)`,
+                    scale,
+                    top: `calc(-5vh + ${i * 30}px)`,
                 }}
-                initial={{ opacity: 1, y: 20 }}
+                initial={{ opacity: 1, y: 0 }} // y값을 0으로 변경하여 처음부터 보이도록 함
                 animate={
-                    isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 30 } // 두 상태 모두 y: 0으로 설정
                 }
-                transition={{ duration: 0, delay: i * 0.1 }}
-                className="card">
-                <h2>{title}</h2>
-                <div className="body">
-                    <div className="description">
-                        <p>{description}</p>
-                        <span>
-                            <a
-                                href={link}
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                See more
-                            </a>
-                            <svg
-                                width="22"
-                                height="12"
-                                viewBox="0 0 22 12"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z"
-                                    fill="black"
-                                />
-                            </svg>
-                        </span>
-                    </div>
-
-                    <div className="imageContainer">
-                        <motion.div
-                            className="inner"
-                            style={{ scale: imageScale }}>
-                            <img src={`/images/${src}`} alt={title} />
-                        </motion.div>
-                    </div>
-                </div>
-            </motion.div>
-        </div>
+                transition={{ duration: 0, delay: i * 0.1 }}>
+                <CardTitle>{title}</CardTitle>
+                <CardBody>
+                    <Description>{childrenNode}</Description>
+                    {/* <ImageContainer>
+                        <Inner style={{ scale: imageScale }} />
+                    </ImageContainer> */}
+                </CardBody>
+            </StyledCard>
+        </CardContainer>
     );
 };
 

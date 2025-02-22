@@ -44,7 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #fff7d2, #e4f9c5);
+  background: linear-gradient(to bottom, #fff7d2, #ffffff);
 
   position: relative;
   z-index: 10;
@@ -58,39 +58,176 @@
   text-align: center;
   color: white;
   max-width: 100%;
+  min-width: 90%;
+  height: 100%;
+}
+.intro-content-top {
+  height:10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
 }
 
-.intro-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.intro-content-middle {
+  position: relative;
+  background-color:#fff;
+  flex-grow: 1;
+  max-height: 60dvh;
+  width:90%;
+}
+.main-image-wrap {
+  width:100%;
+  height:100%;
+  overflow-y:hidden;
+}
+.intro-content-middle img {
+  width:100%
 }
 
-.intro-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
+.intro-content-bottom {
+  height:40%;
+  color:#000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.intro-content-main-text {
+  font-family: "Nanum Myeongjo", serif;
+
+}
+.intro-content-main-text h3 {
+  font-size: 7vw;
+  color: rgb(51, 51, 51);
+  font-weight: 900;
+  letter-spacing: 0.39em;
+  line-height: 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.intro-content-main-text > h3 > span {
+  font-size: 7vw;
+  color: rgb(51, 51, 51);
+  font-weight: 900;
+  letter-spacing: 0.39em;
+  line-height: 1.4em;
+
+}
+.intro-content-main-text span {
+  font-size:4vw;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+
 }
 
 .scroll-indicator {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: bounce 2s infinite;
-  margin-top: 3rem;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  opacity: 0.8;
+  animation: fadeIn 1s ease-in-out;
+  position: absolute;
+  bottom:-30px;
+  left:50%;
+  transform: translateX(-50%);
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+.scroll-text {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.scroll-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dot {
+  color: #666;
+  opacity: 0;
+  animation: dotsFade 1.5s infinite ease-in-out;
+}
+
+.intro-content-main-text .scroll-indicator .dot-1 { font-size: 14px; animation-delay: 0s; }
+.intro-content-main-text .scroll-indicator .dot-2 { font-size: 12px; animation-delay: 0.2s; }
+.intro-content-main-text .scroll-indicator .dot-3 { font-size: 10px; animation-delay: 0.4s; }
+
+@keyframes dotsFade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
   }
-  40% {
-    transform: translateY(-20px);
-  }
-  60% {
-    transform: translateY(-10px);
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
 }
+
+
+
 
 .main-container {
-  background:#e4f9c5;
+  background: linear-gradient(to bottom,  #ffffff,rgb(60, 132, 66));
 }
+
+
+.wedding-text {
+  position: absolute;
+  top: -10vw; /* 요소의 상단을 부모의 50% 위치로 설정 */
+  left:50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+/* 개별 글자 스타일 */
+.wedding-text span {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  /* font-family: "Great Vibes", cursive; 우아한 필기체 */
+  font-family: "Parisienne", cursive; /* 우아한 필기체 */
+  font-size: 14vw;
+  font-weight:900;
+  color: rgb(12, 13, 2);
+}
+
+/* 각 글자마다 딜레이 추가 */
+.wedding-text span:nth-child(1) { animation-delay: 0s; }
+.wedding-text span:nth-child(2) { animation-delay: 0.1s; }
+.wedding-text span:nth-child(3) { animation-delay: 0.2s; }
+.wedding-text span:nth-child(4) { animation-delay: 0.3s; }
+.wedding-text span:nth-child(5) { animation-delay: 0.4s; }
+.wedding-text span:nth-child(6) { animation-delay: 0.5s; }
+.wedding-text span:nth-child(7) { animation-delay: 0.6s; }
+.wedding-text span:nth-child(8) { animation-delay: 0.7s; }
+.wedding-text span:nth-child(9) { animation-delay: 0.8s; }
+.wedding-text span:nth-child(10) { animation-delay: 0.9s; }
+.wedding-text span:nth-child(11) { animation-delay: 1s; }
+
+.dday-text{
+
+  -webkit-text-stroke: 1px rgb(24, 137, 4);
+  color: transparent;
+  font-size:7vw;
+}
+
+

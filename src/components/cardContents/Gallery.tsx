@@ -48,7 +48,12 @@ const ModalImage = styled.img`
     border-radius: 8px;
 `;
 
-const Button = styled.div`
+interface ButtonProps {
+    left?: boolean; // left 속성 추가
+    right?: boolean; // right 속성 추가 (필요한 경우)
+}
+
+const Button = styled.div<ButtonProps>`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

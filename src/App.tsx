@@ -4,7 +4,7 @@ import { useMotionValueEvent, useMotionValue } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import Card from "./components/Card";
 import "./App.css";
-import mainImage from "../public/01_BS_K3424-2.jpg";
+import mainImage from "../public/mainImage.jpg";
 import { CARD_ARRAY } from "./constants/CARD_ARRAY";
 
 const App = () => {
@@ -71,9 +71,7 @@ const App = () => {
                         </h1>
                     </div>
                     <div className="intro-content-middle">
-                        <div className="main-image-wrap">
-                            <img src={mainImage} alt="Wedding Image" />
-                        </div>
+                        <img src={mainImage} alt="Wedding Image" />
                     </div>
                     <div className="intro-content-bottom">
                         <div className="intro-content-main-text">

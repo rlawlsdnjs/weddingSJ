@@ -73,23 +73,21 @@
 
 .intro-content-middle {
   position: relative;
-  background-color:#fff;
   flex-grow: 1;
-  max-height: 60%;
   width:90%;
   overflow: hidden;
 }
-.main-image-wrap {
-  width:100%;
-  height:100%;
-  overflow-y:hidden;
-}
+
 .intro-content-middle img {
-  width:100%
+  max-width: 100%;   /* 부모의 너비를 넘지 않음 */
+  max-height: 100%;  /* 부모의 높이를 넘지 않음 */
+  height: auto;      /* 원본 비율 유지 */
+  width: auto;       /* 원본 비율 유지 */
+  object-fit: contain; /* 이미지가 짤리지 않도록 설정 */
 }
 
 .intro-content-bottom {
-  height:40%;
+  height:25%;
   color:#000;
   display: flex;
   flex-direction: column;
@@ -137,7 +135,7 @@
   opacity: 0.8;
   animation: fadeIn 1s ease-in-out;
   position: absolute;
-  bottom:-30px;
+  bottom:-42px;
   left:50%;
   transform: translateX(-50%);
 }
@@ -195,7 +193,7 @@
 
 .wedding-text {
   position: absolute;
-  top: 50%; /* 요소의 상단을 부모의 50% 위치로 설정 */
+  top: 40%; /* 요소의 상단을 부모의 50% 위치로 설정 */
   left:50%;
   transform: translateX(-50%);
   width: 100%;

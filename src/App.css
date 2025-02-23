@@ -59,7 +59,7 @@
   color: white;
   max-width: 100%;
   min-width: 90%;
-  height: 100%;
+  height: 100dvh;
 }
 .intro-content-top {
   height:10%;
@@ -68,14 +68,16 @@
   justify-content: center;
   position: relative;
   z-index: 10;
+  width: 100%;
 }
 
 .intro-content-middle {
   position: relative;
   background-color:#fff;
   flex-grow: 1;
-  max-height: 60dvh;
+  max-height: 60%;
   width:90%;
+  overflow: hidden;
 }
 .main-image-wrap {
   width:100%;
@@ -193,7 +195,7 @@
 
 .wedding-text {
   position: absolute;
-  top: -10vw; /* 요소의 상단을 부모의 50% 위치로 설정 */
+  top: 50%; /* 요소의 상단을 부모의 50% 위치로 설정 */
   left:50%;
   transform: translateX(-50%);
   width: 100%;

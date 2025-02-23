@@ -56,8 +56,7 @@ const App = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     className="intro-content ">
-                    <div className="intro-content-top"></div>
-                    <div className="intro-content-middle">
+                    <div className="intro-content-top">
                         <h1 className="wedding-text">
                             <span>W</span>
                             <span>e</span>
@@ -70,6 +69,8 @@ const App = () => {
                             <span>a</span>
                             <span>y</span>
                         </h1>
+                    </div>
+                    <div className="intro-content-middle">
                         <div className="main-image-wrap">
                             <img src={mainImage} alt="Wedding Image" />
                         </div>
@@ -104,7 +105,7 @@ const App = () => {
             {/* 카드 섹션 */}
             <main ref={container} className="main-container">
                 {CARD_ARRAY.map((card, i) => {
-                    const scaleFactor = 0.02;
+                    const scaleFactor = 0.04;
                     const targetScale =
                         1 - (CARD_ARRAY.length - i) * scaleFactor;
                     return (

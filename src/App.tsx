@@ -4,7 +4,7 @@ import { useMotionValueEvent, useMotionValue } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import Card from "./components/Card";
 import "./App.css";
-import mainImage from "../public/mainImage.jpg";
+import mainImage from "../public/mainResizeImage.jpg";
 import { CARD_ARRAY } from "./constants/CARD_ARRAY";
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
 
         const raf = (time: number) => {
             lenis.raf(time);
-            ~requestAnimationFrame(raf);
+            requestAnimationFrame(raf);
         };
         requestAnimationFrame(raf);
 
@@ -119,6 +119,11 @@ const App = () => {
                     );
                 })}
             </main>
+
+            {/* Footer 영역 */}
+            <footer className="footer">
+                <p>좋은 하루 되세요!</p>
+            </footer>
         </div>
     );
 };

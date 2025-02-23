@@ -230,4 +230,13 @@
   font-size:7vw;
 }
 
+.footer {
+  background-color: rgb(60, 132, 66);
+  color: white;
+  text-align: center;
+
+  padding: 30px 0;
+
+}
+
 

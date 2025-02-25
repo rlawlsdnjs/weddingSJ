@@ -11,12 +11,12 @@ import InvitationSection from "./components/InvitationSection";
 import bgm from "../public/wedding-251610.mp3";
 
 const INVITATION_TEXTS = [
-    "화사한 봄날, 식목일에,",
-    "서로의 사랑을 뿌리내리며,",
+    "화사한 봄날, 식목일에",
+    "서로의 사랑을 뿌리내리며",
     "미래를 함께 키워가려 합니다.",
-    "나무처럼 견고하게,",
-    "꽃처럼 아름다운 사랑을,",
-    "여러분의 축복 속에,",
+    "나무처럼 견고하고",
+    "꽃처럼 아름다운 사랑을",
+    "여러분의 축복 속에서",
     "깊고 넓게 키우겠습니다.",
 ];
 const App = () => {

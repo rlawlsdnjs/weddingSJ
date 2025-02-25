@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {
-    FaMapMarkerAlt,
-    FaPhoneAlt,
-    FaMap,
-    FaCar,
-    FaMapSigns,
-} from "react-icons/fa"; // 아이콘 추가
+import { Phone, MapPin, Car, LocateIcon, Map } from "lucide-react"; // lucid-react 아이콘 추가
+import naverImg from "../../../public/naver_map.png";
+import kakaoImg from "../../../public/kakao_map.png";
 
 const Container = styled.div`
     display: flex;
@@ -18,31 +14,39 @@ const Container = styled.div`
     margin: 0 auto;
 `;
 
+const AddressLocationTitle = styled.h3`
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 3px;
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 600;
+`;
 const AddressText = styled.p`
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
     color: #333;
+    font-family: "Nanum Myeongjo", serif;
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 10px;
 `;
 
 const CallButton = styled.a`
-    padding: 8px 15px;
-    background-color: #ff6b6b;
-    color: white;
-    border-radius: 5px;
+    padding: 6px 15px;
+    background-color: #fff;
+    color: #666;
+    border-radius: 15px;
     text-decoration: none;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 16px;
+    font-size: 15px;
     transition: background-color 0.3s;
+    border: 1px solid #ddd;
 
     &:hover {
         background-color: #e55a5a;
@@ -50,18 +54,18 @@ const CallButton = styled.a`
 `;
 
 const MapButton = styled.a`
-    padding: 8px 15px;
-    background-color: #4dabf7;
-    color: white;
-    border-radius: 5px;
+    padding: 6px 15px;
+    background-color: #fff;
+    color: #666;
+    border-radius: 15px;
     text-decoration: none;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 16px;
+    font-size: 15px;
     transition: background-color 0.3s;
-
+    border: 1px solid #ddd;
     &:hover {
         background-color: #3a90c2;
     }
@@ -70,27 +74,36 @@ const MapButton = styled.a`
 const LocationImg = styled.img`
     width: 100%;
     border-radius: 8px;
-    margin-bottom: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 1px solid #ddd;
 `;
 
 const NavButtons = styled.div`
     display: flex;
     gap: 10px;
     width: 100%;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-top: none;
 `;
 
 const NavButton = styled.a`
-    background-color: #6a89cc;
-    color: white;
-    border-radius: 5px;
+    width: 50%;
+    padding: 5px 3px;
+    background-color: #fff;
+    color: #666;
     text-decoration: none;
-    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 16px;
+    font-size: 14px;
+    letter-spacing: -0.02em;
     transition: background-color 0.3s;
-
+    border-right: 1px solid #ddd;
     &:hover {
         background-color: #5a7ea0;
     }
@@ -98,12 +111,14 @@ const NavButton = styled.a`
 
 interface LocationProps {
     address: string;
+    subAddress: string;
     placeName: string;
     phoneNumber: string;
 }
 
 const Location: React.FC<LocationProps> = ({
     address,
+    subAddress,
     placeName,
     phoneNumber,
 }) => {
@@ -116,23 +131,22 @@ const Location: React.FC<LocationProps> = ({
     const kakaoNaviUrl = `https://map.kakao.com/link/to/${encodeURIComponent(
         placeName
     )},37.643649,126.790246`;
-    const tMapUrl = `https://apis.openapi.sk.com/tmap/app/routes?name=${encodeURIComponent(
-        placeName
-    )}&lat=37.643649&lon=126.790246`;
 
     return (
         <Container>
+            <AddressLocationTitle>백석 CN 웨딩 그리다홀</AddressLocationTitle>
             <AddressText>{address}</AddressText>
+            <AddressText>{subAddress}</AddressText>
 
             <ButtonContainer>
                 <CallButton href={`tel:${phoneNumber}`}>
-                    <FaPhoneAlt /> 전화 걸기
+                    <Phone size={15} /> 전화
                 </CallButton>
                 <MapButton
                     href={kakaoMapEmbedUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaMapMarkerAlt />
+                    <Map size={15} />
                     지도
                 </MapButton>
             </ButtonContainer>
@@ -147,19 +161,25 @@ const Location: React.FC<LocationProps> = ({
                     href={naverMapUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaMap /> 네이버 지도
+                    <img
+                        src={naverImg}
+                        alt="Naver Map"
+                        width={20}
+                        height={20}
+                    />{" "}
+                    네이버 지도
                 </NavButton>
                 <NavButton
                     href={kakaoNaviUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaCar /> 카카오 네비
-                </NavButton>
-                <NavButton
-                    href={tMapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <FaMapSigns /> 티맵
+                    <img
+                        src={kakaoImg}
+                        alt="Kakao Map"
+                        width={20}
+                        height={20}
+                    />{" "}
+                    카카오 네비
                 </NavButton>
             </NavButtons>
         </Container>

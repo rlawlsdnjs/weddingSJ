@@ -25,7 +25,8 @@ export const CARD_ARRAY: CardProps[] = [
         color: "linear-gradient(to bottom, #d8f5e4 10%, #ffffff 90%)", // 연한 초록색
         childrenNode: (
             <Location
-                address="경기도 고양시 일산동구 중앙로 1080, 10층 (백석동 1288-2)"
+                address="경기도 고양시 일산동구 중앙로 1080, 10층"
+                subAddress="(백석동 1288-2)"
                 placeName="천년컨벤션웨딩홀"
                 phoneNumber="031-811-7000"
             />

@@ -12,6 +12,7 @@ interface CardProps {
     targetScale: number;
     isVisible: boolean;
     childrenNode?: ReactNode;
+    id: string;
 }
 
 // Styled Components

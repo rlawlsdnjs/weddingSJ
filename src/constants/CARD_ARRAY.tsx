@@ -14,11 +14,11 @@ interface CardProps {
 
 // 프로젝트 배열
 export const CARD_ARRAY: CardProps[] = [
-    {
-        title: "Invitation",
-        color: "linear-gradient(to bottom, #fff9d9 10%, #ffffff 90%)", // 연한 노랑
-        childrenNode: <Invitation />,
-    },
+    // {
+    //     title: "Invitation",
+    //     color: "linear-gradient(to bottom, #fff9d9 10%, #ffffff 90%)", // 연한 노랑
+    //     childrenNode: <Invitation />,
+    // },
 
     {
         title: "Location",

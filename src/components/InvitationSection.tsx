@@ -17,14 +17,14 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
     });
 
     const totalTexts = invitationTexts.length;
-    const stepSize = 1 / totalTexts;
+    const stepSize = 0.08; // 고정된 stepSize 사용
 
     return (
         <StyledSection ref={sectionRef}>
             <TextContainer>
                 {invitationTexts.map((text, index) => {
                     const appearStart = stepSize * index;
-                    const appearEnd = appearStart + stepSize * 0.1; // 문장이 더 오래 보이게 수정
+                    const appearEnd = appearStart + stepSize * 0.8; // 텍스트가 더 오랫동안 보이게 수정
 
                     const opacity = useTransform(
                         scrollYProgress,
@@ -53,8 +53,9 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
 };
 
 const StyledSection = styled.section`
-    height: 1000vh; /* 문장이 보일 시간을 충분히 확보할 수 있도록 높이를 늘림 */
-    background-color: #f7f7f7;
+    height: 300vh; /* 300vh로 높이 설정 */
+    background: linear-gradient(to bottom, #fff7d2, #f9ffdf 70%);
+
     position: relative;
     overflow: hidden;
 `;
@@ -69,14 +70,18 @@ const TextContainer = styled.div`
 `;
 
 const StyledMotionText = styled(motion.p)`
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
+    font-family: "Nanum Myeongjo", serif;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    letter-spacing: 0em;
+    line-height: 2.3em;
+    word-break: keep-all;
     margin: 0;
+    font-weight: bold;
     opacity: 0; /* 시작 시 투명하게 설정 */
 
     @media (max-width: 768px) {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 `;
 

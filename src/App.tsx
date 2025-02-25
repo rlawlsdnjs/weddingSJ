@@ -11,15 +11,14 @@ import InvitationSection from "./components/InvitationSection";
 import bgm from "../public/wedding-251610.mp3";
 
 const INVITATION_TEXTS = [
-    "서로가 마주보며 다져온 사랑을",
-    "이제 함께 한 곳을 바라보며",
-    "걸어갈 수 있는",
-    "큰 사랑으로 키우고자 합니다.",
-    "저희 두 사람이 사랑의 이름으로",
-    "지켜나갈 수 있게 앞날을",
-    "축복해 주시면 감사하겠습니다.",
+    "화사한 봄날, 식목일에,",
+    "서로의 사랑을 뿌리내리며,",
+    "미래를 함께 키워가려 합니다.",
+    "나무처럼 견고하게,",
+    "꽃처럼 아름다운 사랑을,",
+    "여러분의 축복 속에,",
+    "깊고 넓게 키우겠습니다.",
 ];
-
 const App = () => {
     const container = useRef<HTMLDivElement>(null);
     const introSection = useRef<HTMLDivElement>(null);
@@ -103,6 +102,15 @@ const App = () => {
                             </span>
                         </div>
                     </div>
+                    <div className="scroll-indicator">
+                        <div className="scroll-dots">
+                            {[...Array(6)].map((_, i) => (
+                                <span key={i} className={`dot dot-${i + 1}`}>
+                                    •
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </motion.div>
             </div>
             {/* 초대 섹션 컴포넌트 */}
@@ -111,7 +119,7 @@ const App = () => {
             </div>
 
             {/* 카드 섹션 */}
-            {/* <main ref={container} className="main-container">
+            <main ref={container} className="main-container">
                 {CARD_ARRAY.map((card, i) => {
                     const scaleFactor = 0.04;
                     const targetScale =
@@ -129,7 +137,7 @@ const App = () => {
                         />
                     );
                 })}
-            </main> */}
+            </main>
 
             {/* Footer 영역 */}
             <footer className="footer">

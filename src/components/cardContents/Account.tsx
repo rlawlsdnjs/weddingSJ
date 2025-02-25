@@ -11,9 +11,9 @@ const SectionTitle = styled.h3<{ isGroom: boolean }>`
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    background-color: #e9e9e9;
+    background-color: #e8e8e8;
     color: ${({ isGroom }) =>
-        isGroom ? "#a3c9f4" : "#f9a9d7"}; /* 연한 파랑, 연한 핑크 */
+        isGroom ? "#000987" : "#750000"}; /* 연한 파랑, 연한 핑크 */
     padding: 3px 0;
 `;
 
@@ -55,10 +55,10 @@ const CopyButton = styled.button`
     background-color: #fff;
     color: #666;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 8px 15px;
     transition: background 0.2s;
     width: max-content;
     font-weight: 900;

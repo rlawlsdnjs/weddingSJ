@@ -32,10 +32,10 @@ const StyledCard = styled(motion.div)`
     position: relative;
     width: 90%;
     height: 85vh;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 20px 0px;
     background-color: white;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
     transform-origin: center top;
     will-change: transform;

@@ -154,7 +154,7 @@
   opacity: 0.8;
   animation: fadeIn 1s ease-in-out;
   position: absolute;
-  bottom:-42px;
+  bottom:-150px;
   left:50%;
   transform: translateX(-50%);
 }
@@ -206,7 +206,7 @@
 
 
 .main-container {
-  background: linear-gradient(to bottom,  #fff7d2,rgb(255, 238, 238));
+  background: linear-gradient(to bottom,  #f9ffdf,rgb(255, 238, 238));
 }
 
 

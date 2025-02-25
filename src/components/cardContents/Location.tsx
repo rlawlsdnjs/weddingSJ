@@ -13,10 +13,6 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -79,13 +75,11 @@ const LocationImg = styled.img`
 
 const NavButtons = styled.div`
     display: flex;
-    flex-direction: column;
     gap: 10px;
     width: 100%;
 `;
 
 const NavButton = styled.a`
-    padding: 8px 15px;
     background-color: #6a89cc;
     color: white;
     border-radius: 5px;
@@ -128,7 +122,6 @@ const Location: React.FC<LocationProps> = ({
 
     return (
         <Container>
-            <h3>📍 위치 안내</h3>
             <AddressText>{address}</AddressText>
 
             <ButtonContainer>
@@ -140,7 +133,7 @@ const Location: React.FC<LocationProps> = ({
                     target="_blank"
                     rel="noopener noreferrer">
                     <FaMapMarkerAlt />
-                    지도 열기
+                    지도
                 </MapButton>
             </ButtonContainer>
 
@@ -154,19 +147,19 @@ const Location: React.FC<LocationProps> = ({
                     href={naverMapUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaMap /> 네이버 지도 열기
+                    <FaMap /> 네이버 지도
                 </NavButton>
                 <NavButton
                     href={kakaoNaviUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaCar /> 카카오 네비 열기
+                    <FaCar /> 카카오 네비
                 </NavButton>
                 <NavButton
                     href={tMapUrl}
                     target="_blank"
                     rel="noopener noreferrer">
-                    <FaMapSigns /> 티맵 열기
+                    <FaMapSigns /> 티맵
                 </NavButton>
             </NavButtons>
         </Container>

@@ -6,7 +6,6 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 // 스타일 설정
 const GalleryWrap = styled.div`
     position: relative; /* 모달이 부모 요소에 상대적으로 위치하도록 설정 */
-    background: pink;
     height: 100%;
 `;
 

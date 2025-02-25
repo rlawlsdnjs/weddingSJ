@@ -1,19 +1,34 @@
 import { useEffect, useRef, useState } from "react";
-import { useScroll, motion } from "framer-motion";
+import { useScroll, motion, useTransform } from "framer-motion";
 import { useMotionValueEvent, useMotionValue } from "framer-motion";
 import Lenis from "@studio-freight/lenis";
 import Card from "./components/Card";
 import "./App.css";
 import mainImage from "../public/mainResizeImage.jpg";
 import { CARD_ARRAY } from "./constants/CARD_ARRAY";
+import MusicPlayer from "./components/MusicPlayer";
+import InvitationSection from "./components/InvitationSection";
+import bgm from "../public/wedding-251610.mp3";
+
+const INVITATION_TEXTS = [
+    "서로가 마주보며 다져온 사랑을",
+    "이제 함께 한 곳을 바라보며",
+    "걸어갈 수 있는",
+    "큰 사랑으로 키우고자 합니다.",
+    "저희 두 사람이 사랑의 이름으로",
+    "지켜나갈 수 있게 앞날을",
+    "축복해 주시면 감사하겠습니다.",
+];
 
 const App = () => {
     const container = useRef<HTMLDivElement>(null);
     const introSection = useRef<HTMLDivElement>(null);
+    const invitationSection = useRef<HTMLDivElement>(null);
 
+    // 스크롤 감지 영역을 더 크게 설정하여 애니메이션 속도 조절
     const { scrollYProgress } = useScroll({
-        container,
-        offset: ["start start", "end end"],
+        target: invitationSection,
+        offset: ["start end", "end start"],
     });
 
     const [hasScrolledPastIntro, setHasScrolledPastIntro] = useState(false);
@@ -49,10 +64,12 @@ const App = () => {
 
     return (
         <div className="app-container">
+            {/* 음악 플레이어 컴포넌트 */}
+            <MusicPlayer musicSrc={bgm} />
             {/* 인트로 섹션 */}
             <div ref={introSection} className="intro-section">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     className="intro-content ">
@@ -84,24 +101,17 @@ const App = () => {
                                 <br />
                                 백석 CN웨딩 그리다홀
                             </span>
-                            <div className="scroll-indicator">
-                                <div className="scroll-dots">
-                                    {[...Array(3)].map((_, i) => (
-                                        <span
-                                            key={i}
-                                            className={`dot dot-${i + 1}`}>
-                                            •
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </motion.div>
             </div>
+            {/* 초대 섹션 컴포넌트 */}
+            <div ref={invitationSection}>
+                <InvitationSection invitationTexts={INVITATION_TEXTS} />
+            </div>
 
             {/* 카드 섹션 */}
-            <main ref={container} className="main-container">
+            {/* <main ref={container} className="main-container">
                 {CARD_ARRAY.map((card, i) => {
                     const scaleFactor = 0.04;
                     const targetScale =
@@ -115,10 +125,11 @@ const App = () => {
                             range={[i * 0.25, 1]}
                             targetScale={targetScale}
                             isVisible={hasScrolledPastIntro}
+                            id={`card-${i}`}
                         />
                     );
                 })}
-            </main>
+            </main> */}
 
             {/* Footer 영역 */}
             <footer className="footer">

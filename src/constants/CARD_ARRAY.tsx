@@ -16,24 +16,13 @@ interface CardProps {
 export const CARD_ARRAY: CardProps[] = [
     {
         title: "Invitation",
-        color: "rgba(255,255,255,1)",
+        color: "linear-gradient(to bottom, #fff9d9 10%, #ffffff 90%)", // 연한 노랑
         childrenNode: <Invitation />,
-    },
-    {
-        title: "Account",
-        color: "rgba(255,255,255,1)",
-        childrenNode: (
-            <>
-                {BANK_ACCOUNTS.map((group, index) => (
-                    <Account key={index} {...group} />
-                ))}
-            </>
-        ),
     },
 
     {
         title: "Location",
-        color: "rgba(255,255,255,1)",
+        color: "linear-gradient(to bottom, #d8f5e4 10%, #ffffff 90%)", // 연한 초록색
         childrenNode: (
             <Location
                 address="경기도 고양시 일산동구 중앙로 1080, 10층 (백석동 1288-2)"
@@ -44,7 +33,23 @@ export const CARD_ARRAY: CardProps[] = [
     },
     {
         title: "Gallery",
-        color: "rgba(255,255,255,1)",
+        color: "linear-gradient(to bottom, #d5f0d1 10%, #ffffff 90%)", // 연한 초록색
         childrenNode: <Gallery />,
+    },
+    {
+        title: "Account",
+        color: "linear-gradient(to bottom, #fef9e6 10%, #ffffff 90%)", // 연한 녹색
+        childrenNode: (
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                }}>
+                {BANK_ACCOUNTS.map((group, index) => (
+                    <Account key={index} {...group} />
+                ))}
+            </div>
+        ),
     },
 ];

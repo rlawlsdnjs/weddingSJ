@@ -34,11 +34,11 @@ const StyledCard = styled(motion.div)`
     border-radius: 15px;
     padding: 20px 0px;
     background-color: white;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
     transform-origin: center top;
     will-change: transform;
-
+    justify-content: center;
     @media (max-width: 768px) {
         width: 90%;
         height: 80vh;
@@ -51,7 +51,6 @@ const CardTitle = styled.h2`
     margin: 0;
     font-size: 40px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     font-family: "Parisienne", cursive;
     color: #000;
     @media (max-width: 768px) {
@@ -74,23 +73,17 @@ const Description = styled.div`
     height: 100%;
     position: relative;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     p {
         font-size: 16px;
         line-height: 1.6;
         color: #333;
 
-        &::first-letter {
-            font-size: 26px;
-            font-weight: bold;
-        }
-
         @media (max-width: 768px) {
             font-size: 14px;
-
-            &::first-letter {
-                font-size: 22px;
-            }
         }
     }
 
@@ -145,6 +138,7 @@ const Card: React.FC<CardProps> = ({
     targetScale,
     isVisible,
     childrenNode,
+    id,
 }) => {
     const container = useRef(null);
 
@@ -157,10 +151,10 @@ const Card: React.FC<CardProps> = ({
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <CardContainer ref={container} isVisible={isVisible}>
+        <CardContainer ref={container} isVisible={isVisible} id={id}>
             <StyledCard
                 style={{
-                    backgroundColor: color,
+                    background: color,
                     scale,
                     top: `calc(-5vh + ${i * 30}px)`,
                 }}

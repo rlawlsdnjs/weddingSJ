@@ -511,6 +511,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof n.getDerivedStat
     margin-top: 8px;
 `,pR=()=>C.jsxs(mR,{children:[C.jsx(gR,{children:"오시는 길"}),C.jsxs(uf,{children:[C.jsx(cf,{children:"지하철"}),C.jsxs(ff,{children:[C.jsx(un,{children:"3호선 백석역 5번출구(150m)"}),C.jsxs(un,{children:["LG전자 베스트샵 지나 정면건물",C.jsx("br",{}),"(남정골드프라자 10층)"]})]})]}),C.jsxs(uf,{children:[C.jsx(cf,{children:"버스"}),C.jsxs(ff,{children:[C.jsx(un,{children:"일반 : 05,8, 66, 76, 88, 90, 95, 96, 150, 780"}),C.jsx(un,{children:"좌석 : 108, 770, 830, 871"}),C.jsx(un,{children:"직행 : 200, 3300, 8109, 8407, 9700"}),C.jsx(un,{children:"B : 700, R : 9707, 9711, G : 7727, M : 7412"})]})]}),C.jsxs(uf,{children:[C.jsx(cf,{children:"자가용"}),C.jsxs(ff,{children:[C.jsx(un,{children:"2시간 무료(이후 발생하는 요금은 개별 정산)"}),C.jsx(un,{children:"1. 네비게이션 - 천년컨벤션웨딩홀 또는 CN천년웨딩홀 일산점"}),C.jsxs(un,{children:["2. 천년컨벤션 웨딩홀 상가 1층, 지하 1,2층",C.jsx("br",{})," 주차장 만차 시 주차요원의 안내에 따라 이동"]}),C.jsxs(un,{children:["3. 외부 주차장(고양터미널 지하 4층)",C.jsx("br",{}),"이용 시 웨딩홀 셔틀버스 운영"]})]})]})]}),mR=ut.div`
     font-family: "Nanum Myeongjo", serif;
+    color: #666;
     padding: 0 20px;
 `,gR=ut.h2`
     font-size: 1.1rem;
@@ -528,7 +529,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof n.getDerivedStat
     font-size: 0.8rem;
     line-height: 1.5;
     margin-top: 5px;
-`,yR="/weddingSJ/assets/yeloflower-CP_tuiLu.png",vR=()=>{J.useEffect(()=>{window.Kakao.isInitialized()||window.Kakao.init("7e7912d567a8b55d7eb768b59d381b6a")},[]);const n=()=>{navigator.clipboard.writeText(window.location.href),alert("링크가 복사되었습니다!")},a=()=>{window.Kakao?window.Kakao.Link.sendDefault({objectType:"feed",content:{title:"진원❣️소라",description:"모바일 청첩장",imageUrl:j1,link:{mobileWebUrl:window.location.href,webUrl:window.location.href}}}):alert("카카오톡 SDK가 로드되지 않았습니다.")};return C.jsxs(SR,{children:[C.jsx("img",{style:{width:"50px"},src:yR}),C.jsx(bR,{children:"여러분의 꽃도 피길 바라며"}),C.jsxs(TR,{children:[C.jsx(A0,{onClick:n,children:"링크 복사하기"}),C.jsx(A0,{onClick:a,children:"카카오톡 공유하기"})]})]})},SR=ut.div`
+`,yR="/weddingSJ/assets/yeloflower-CP_tuiLu.png",vR=()=>{J.useEffect(()=>{window.Kakao.isInitialized()||window.Kakao.init("f5381c601d71499124c5920125f3f74d")},[]);const n=()=>{navigator.clipboard.writeText(window.location.href),alert("링크가 복사되었습니다!")},a=()=>{window.Kakao?window.Kakao.Link.sendDefault({objectType:"feed",content:{title:"진원❣️소라",description:"모바일 청첩장",imageUrl:j1,link:{mobileWebUrl:window.location.href,webUrl:window.location.href}}}):alert("카카오톡 SDK가 로드되지 않았습니다.")};return C.jsxs(SR,{children:[C.jsx("img",{style:{width:"50px"},src:yR}),C.jsx(bR,{children:"여러분의 꽃도 피길 바라며"}),C.jsxs(TR,{children:[C.jsx(A0,{onClick:n,children:"링크 복사하기"}),C.jsx(A0,{onClick:a,children:"카카오톡 공유하기"})]})]})},SR=ut.div`
     text-align: center;
     padding-top: 100px;
     width: 100%;

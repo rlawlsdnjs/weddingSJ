@@ -12,6 +12,7 @@ import bgm from "../public/wedding-251610.mp3";
 import Dday from "./components/Dday";
 import Transportation from "./components/cardContents/Transportation";
 import Share from "./components/Share";
+import Opening from "./components/Opening";
 
 const INVITATION_TEXTS = [
     "화사한 봄날, 식목일에",
@@ -23,6 +24,15 @@ const INVITATION_TEXTS = [
     "깊고 넓게 키우겠습니다.",
 ];
 const App = () => {
+    const [isOpeningDone, setIsOpeningDone] = useState(false);
+
+    // 오프닝 텍스트 애니메이션 완료 후 메인 콘텐츠 로드
+    useEffect(() => {
+        setTimeout(() => {
+            setIsOpeningDone(true); // 1.5초 후에 메인 콘텐츠 로드
+        }, 1500); // 1.5초 후
+    }, []);
+
     const container = useRef<HTMLDivElement>(null);
     const introSection = useRef<HTMLDivElement>(null);
     const invitationSection = useRef<HTMLDivElement>(null);
@@ -68,104 +78,116 @@ const App = () => {
         <div className="app-container">
             {/* 음악 플레이어 컴포넌트 */}
             <MusicPlayer musicSrc={bgm} />
-            {/* 인트로 섹션 */}
-            <div ref={introSection} className="intro-section">
-                <motion.div
-                    initial={{ opacity: 0, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="intro-content ">
-                    <div className="intro-content-top">
-                        <h1 className="wedding-text">
-                            <span>W</span>
-                            <span>e</span>
-                            <span>d</span>
-                            <span>d</span>
-                            <span>i</span>
-                            <span>n</span>
-                            <span>g</span>
-                            <span>D</span>
-                            <span>a</span>
-                            <span>y</span>
-                        </h1>
+            {/* 오프닝 페이지 */}
+            {/* 오프닝 화면 */}
+            {isOpeningDone && (
+                <Opening onFinish={() => setIsOpeningDone(true)} />
+            )}
+
+            {isOpeningDone && (
+                <>
+                    {/* 인트로 섹션 */}
+                    <div ref={introSection} className="intro-section">
+                        <motion.div
+                            initial={{ opacity: 0, y: 0 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1 }}
+                            className="intro-content ">
+                            <div className="intro-content-top">
+                                <h1 className="wedding-text">
+                                    <span>W</span>
+                                    <span>e</span>
+                                    <span>d</span>
+                                    <span>d</span>
+                                    <span>i</span>
+                                    <span>n</span>
+                                    <span>g</span>
+                                    <span>D</span>
+                                    <span>a</span>
+                                    <span>y</span>
+                                </h1>
+                            </div>
+                            <div className="intro-content-middle">
+                                <img src={mainImage} alt="Wedding Image" />
+                            </div>
+                            <div className="intro-content-bottom">
+                                <div className="intro-content-main-text">
+                                    <h3>
+                                        <span>김진원 </span> <span>|</span>
+                                        <span>박소라</span>
+                                    </h3>
+                                    <span>
+                                        2025.04.05 SAT PM 12:30
+                                        <br />
+                                        백석 CN웨딩 그리다홀
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="scroll-indicator">
+                                <div className="scroll-dots">
+                                    {[...Array(6)].map((_, i) => (
+                                        <span
+                                            key={i}
+                                            className={`dot dot-${i + 1}`}>
+                                            •
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
-                    <div className="intro-content-middle">
-                        <img src={mainImage} alt="Wedding Image" />
+                    {/* 초대 섹션 컴포넌트 */}
+                    <div
+                        ref={invitationSection}
+                        style={{ position: "relative", zIndex: 2 }}>
+                        <InvitationSection invitationTexts={INVITATION_TEXTS} />
                     </div>
-                    <div className="intro-content-bottom">
-                        <div className="intro-content-main-text">
-                            <h3>
-                                <span>김진원 </span> <span>|</span>
-                                <span>박소라</span>
-                            </h3>
-                            <span>
-                                2025.04.05 SAT PM 12:30
-                                <br />
-                                백석 CN웨딩 그리다홀
-                            </span>
-                        </div>
+                    <div style={{ position: "relative", zIndex: 3 }}>
+                        <Dday></Dday>
                     </div>
-                    <div className="scroll-indicator">
-                        <div className="scroll-dots">
-                            {[...Array(6)].map((_, i) => (
-                                <span key={i} className={`dot dot-${i + 1}`}>
-                                    •
-                                </span>
-                            ))}
-                        </div>
+                    {/* 카드 섹션 */}
+                    <div style={{ position: "relative", zIndex: 4 }}>
+                        <main ref={container} className="main-container">
+                            {CARD_ARRAY.map((card, i) => {
+                                const scaleFactor = 0.03;
+                                const targetScale =
+                                    1 - (CARD_ARRAY.length - i) * scaleFactor;
+                                return (
+                                    <Card
+                                        key={`p_${i}`}
+                                        i={i}
+                                        {...card}
+                                        progress={boundedProgress}
+                                        range={[i * 0.25, 1]}
+                                        targetScale={targetScale}
+                                        isVisible={hasScrolledPastIntro}
+                                        id={`card-${i}`}
+                                    />
+                                );
+                            })}
+                        </main>
                     </div>
-                </motion.div>
-            </div>
-            {/* 초대 섹션 컴포넌트 */}
-            <div
-                ref={invitationSection}
-                style={{ position: "relative", zIndex: 2 }}>
-                <InvitationSection invitationTexts={INVITATION_TEXTS} />
-            </div>
-            <div style={{ position: "relative", zIndex: 3 }}>
-                <Dday></Dday>
-            </div>
-            {/* 카드 섹션 */}
-            <div style={{ position: "relative", zIndex: 4 }}>
-                <main ref={container} className="main-container">
-                    {CARD_ARRAY.map((card, i) => {
-                        const scaleFactor = 0.03;
-                        const targetScale =
-                            1 - (CARD_ARRAY.length - i) * scaleFactor;
-                        return (
-                            <Card
-                                key={`p_${i}`}
-                                i={i}
-                                {...card}
-                                progress={boundedProgress}
-                                range={[i * 0.25, 1]}
-                                targetScale={targetScale}
-                                isVisible={hasScrolledPastIntro}
-                                id={`card-${i}`}
-                            />
-                        );
-                    })}
-                </main>
-            </div>
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 5,
-                    background:
-                        "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 238))",
-                }}>
-                <Transportation />
-            </div>
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 6,
-                    background:
-                        "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 228))",
-                }}>
-                {/* Footer 영역 */}
-                <Share />
-            </div>
+                    <div
+                        style={{
+                            position: "relative",
+                            zIndex: 5,
+                            background:
+                                "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 238))",
+                        }}>
+                        <Transportation />
+                    </div>
+                    <div
+                        style={{
+                            position: "relative",
+                            zIndex: 6,
+                            background:
+                                "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 228))",
+                        }}>
+                        {/* Footer 영역 */}
+                        <Share />
+                    </div>
+                </>
+            )}
         </div>
     );
 };

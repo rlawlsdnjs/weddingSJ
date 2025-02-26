@@ -43,7 +43,7 @@ const Dday = () => {
     return (
         <DayWrap>
             <DdayContainer>
-                <img style={{ width: "30px" }} src={grass} />
+                <img style={{ width: "25px" }} src={grass} />
 
                 <DdayTitle>결혼식까지</DdayTitle>
                 <CountdownWrapper>

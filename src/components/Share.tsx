@@ -40,7 +40,10 @@ const Share = () => {
     return (
         <ShareWrapper>
             <img style={{ width: "50px" }} src={yellowFlower} />
-            <ShareTitle>여러분의 꽃도 피길 바라며</ShareTitle>
+            <ShareTitle>
+                여러분의 꽃도 <br />
+                활짝 피어나기를 바라며
+            </ShareTitle>
             <ButtonContainer>
                 <ShareButton onClick={handleCopyLink}>
                     링크 복사하기

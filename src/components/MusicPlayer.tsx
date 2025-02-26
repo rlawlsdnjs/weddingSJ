@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Volume2, VolumeX } from "lucide-react";
 
@@ -25,10 +25,19 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ musicSrc }) => {
         }
     };
 
+    // 컴포넌트가 마운트되면 자동 재생 시작
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.play().catch((e) => {
+                console.log("자동 재생이 차단되었습니다:", e);
+            });
+        }
+    }, []);
+
     return (
         <>
-            <audio ref={audioRef} src={musicSrc} loop />
-
+            <audio ref={audioRef} src={musicSrc} loop autoPlay />{" "}
+            {/* 자동 재생을 위해 autoPlay 추가 */}
             <MusicControlButton onClick={toggleMusic}>
                 {isPlaying ? (
                     <Volume2 size={15} color="#ddd" />

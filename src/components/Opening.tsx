@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import pinkFlower from "../../public/pinkFlowerResize.png";
+import pinkFlower from "../../public/pinkflowerResize.png";
 
 interface OpeningProps {
     onFinish: () => void;

@@ -7,7 +7,7 @@ const Share = () => {
     useEffect(() => {
         // 카카오 SDK가 이미 초기화 되었는지 확인
         if (!window.Kakao.isInitialized()) {
-            window.Kakao.init("7e7912d567a8b55d7eb768b59d381b6a"); // 카카오 개발자 사이트에서 발급받은 앱 키를 입력
+            window.Kakao.init("f5381c601d71499124c5920125f3f74d"); // 카카오 개발자 사이트에서 발급받은 앱 키를 입력
         }
     }, []);
 

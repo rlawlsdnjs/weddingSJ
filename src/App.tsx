@@ -78,9 +78,8 @@ const App = () => {
         <div className="app-container">
             {/* 음악 플레이어 컴포넌트 */}
             <MusicPlayer musicSrc={bgm} />
-            {/* 오프닝 페이지 */}
             {/* 오프닝 화면 */}
-            {isOpeningDone && (
+            {!isOpeningDone && (
                 <Opening onFinish={() => setIsOpeningDone(true)} />
             )}
 

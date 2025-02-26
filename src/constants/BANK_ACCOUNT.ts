@@ -2,7 +2,7 @@ export const BANK_ACCOUNTS = [
     {
         section: "신랑측",
         accounts: [
-            { name: "혼주 김철규", account: "신한 401-910362-45307" },
+            { name: "혼주 김철규", account: "하나 401-910362-45307" },
             { name: "신랑 김진원", account: "국민 469901-04-338246" },
         ],
         isGroom:true

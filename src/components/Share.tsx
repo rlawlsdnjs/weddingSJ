@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { styled } from "styled-components";
 import yellowFlower from "../../public/yeloflower.png";
+import mainImg from "../../public/mainResizeImage.jpg";
 const Share = () => {
     // 카카오 SDK 초기화
     useEffect(() => {
@@ -22,9 +23,9 @@ const Share = () => {
             window.Kakao.Link.sendDefault({
                 objectType: "feed",
                 content: {
-                    title: "공유 제목", // 공유할 제목
-                    description: "공유 설명", // 공유할 설명
-                    imageUrl: "https://your-image-url.com/image.jpg", // 공유할 이미지 URL
+                    title: "진원❣️소라", // 공유할 제목
+                    description: "모바일 청첩장", // 공유할 설명
+                    imageUrl: mainImg, // 공유할 이미지 URL
                     link: {
                         mobileWebUrl: window.location.href, // 모바일 웹 URL
                         webUrl: window.location.href, // PC 웹 URL

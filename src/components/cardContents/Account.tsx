@@ -1,20 +1,28 @@
+import { Flower } from "lucide-react";
 import styled from "styled-components";
 
 const SectionContainer = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #e9e9e9;
+    border-radius: 3px;
 `;
 
 const SectionTitle = styled.h3<{ isGroom: boolean }>`
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
-    background-color: #e8e8e8;
+    background-color: #e9e9e9;
     color: ${({ isGroom }) =>
         isGroom ? "#000987" : "#750000"}; /* 연한 파랑, 연한 핑크 */
-    padding: 3px 0;
+    padding: 3px 10px;
+    font-family: "Nanum Myeongjo", serif;
+    & > span {
+        margin-top: 2px;
+    }
 `;
 
 const AccountList = styled.ul`
@@ -29,8 +37,8 @@ const AccountItem = styled.li<{ isFirst: boolean }>`
     display: flex;
     flex-direction: column;
     padding: 8px 12px;
-    background: #f8f8f8;
-    border-top: 1px solid #ddd;
+    background: #f9f9f9;
+    border-top: 1px solid #e9e9e9;
     gap: 5px;
 `;
 
@@ -38,6 +46,8 @@ const AccountItemTop = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: "Noto Sans KR", sans-serif;
+    letter-spacing: -0.02em;
 `;
 
 const AccountName = styled.span`
@@ -82,7 +92,10 @@ const Account = ({ section, accounts, isGroom }: AccountProps) => {
 
     return (
         <SectionContainer>
-            <SectionTitle isGroom={isGroom}>{section}</SectionTitle>
+            <SectionTitle isGroom={isGroom}>
+                <Flower size={15} />
+                <span>{section}</span>
+            </SectionTitle>
             <AccountList>
                 {accounts.map((acc, index) => (
                     <AccountItem key={index} isFirst={index === 0}>

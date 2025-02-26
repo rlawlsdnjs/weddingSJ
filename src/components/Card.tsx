@@ -52,7 +52,8 @@ const CardTitle = styled.h2`
     margin: 0;
     font-size: 40px;
     padding-bottom: 15px;
-    font-family: "Parisienne", cursive;
+    font-family: "Gowun Batang", serif;
+    font-weight: 700;
     color: #000;
     @media (max-width: 768px) {
         font-size: 30px;
@@ -77,16 +78,6 @@ const Description = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    p {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #333;
-
-        @media (max-width: 768px) {
-            font-size: 14px;
-        }
-    }
 
     > span {
         display: flex;

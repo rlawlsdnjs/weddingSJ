@@ -9,7 +9,7 @@ const InvitationWrap = styled.div`
 `;
 const InvitationText = styled.div`
     font-family: "Nanum Myeongjo", serif;
-    font-size: 5vw;
+    font-size: 2rem;
     color: rgb(51, 51, 51);
     text-align: center;
     letter-spacing: 0em;

@@ -100,7 +100,7 @@
 
 }
 .intro-content-main-text h3 {
-  font-size: 7vw;
+  font-size: 2rem;
   color: rgb(51, 51, 51);
   font-weight: 900;
   letter-spacing: 0.39em;
@@ -110,7 +110,7 @@
   align-items: center;
 }
 .intro-content-main-text > h3 > span {
-  font-size: 7vw;
+  font-size: 1.6rem;
   color: rgb(51, 51, 51);
   font-weight: 900;
   letter-spacing: 0.39em;
@@ -118,7 +118,7 @@
 
 }
 .intro-content-main-text span {
-  font-size:4vw;
+  font-size:0.8rem;
   font-weight: 600;
   letter-spacing: 0.07em;
 
@@ -136,7 +136,7 @@
 }
 
 .invitation-text {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #333;
   text-align: center;
@@ -215,7 +215,7 @@
 
 .wedding-text {
   position: absolute;
-  top: 40%; /* 요소의 상단을 부모의 50% 위치로 설정 */
+  top: 30%; /* 요소의 상단을 부모의 50% 위치로 설정 */
   left:50%;
   transform: translateX(-50%);
   width: 100%;
@@ -225,9 +225,8 @@
   display: inline-block;
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
-  /* font-family: "Great Vibes", cursive; 우아한 필기체 */
   font-family: "Parisienne", cursive; /* 우아한 필기체 */
-  font-size: 14vw;
+  font-size: 3.5rem;
   font-weight:900;
   color: rgb(12, 13, 2);
 }

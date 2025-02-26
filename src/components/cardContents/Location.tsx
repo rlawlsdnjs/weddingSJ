@@ -15,14 +15,14 @@ const Container = styled.div`
 `;
 
 const AddressLocationTitle = styled.h3`
-    font-size: 18px;
+    font-size: 1rem;
     color: #333;
     margin-bottom: 3px;
     font-family: "Nanum Myeongjo", serif;
     font-weight: 600;
 `;
 const AddressText = styled.p`
-    font-size: 18px;
+    font-size: 14px;
     color: #333;
     font-family: "Nanum Myeongjo", serif;
 `;
@@ -83,7 +83,6 @@ const LocationImg = styled.img`
 
 const NavButtons = styled.div`
     display: flex;
-    gap: 10px;
     width: 100%;
     justify-content: center;
     border: 1px solid #ddd;
@@ -93,7 +92,7 @@ const NavButtons = styled.div`
 
 const NavButton = styled.a`
     width: 50%;
-    padding: 5px 3px;
+    padding: 5px 5px;
     background-color: #fff;
     color: #666;
     text-decoration: none;

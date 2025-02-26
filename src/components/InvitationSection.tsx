@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -10,11 +10,26 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
     invitationTexts,
 }) => {
     const sectionRef = useRef<HTMLDivElement>(null);
+    const [isScrolledBeyond, setIsScrolledBeyond] = useState(false);
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ["start start", "end start"],
     });
+
+    // StyledSection의 높이가 스크롤 값보다 커지면 z-index를 -1로 설정
+    useEffect(() => {
+        const handleScroll = () => {
+            if (sectionRef.current) {
+                const sectionHeight = sectionRef.current.offsetHeight;
+                const scrollPosition = window.scrollY;
+                setIsScrolledBeyond(scrollPosition > sectionHeight);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const totalTexts = invitationTexts.length;
     const stepSize = 0.08; // 고정된 stepSize 사용
@@ -41,7 +56,11 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
                     return (
                         <StyledMotionText
                             key={index}
-                            style={{ opacity, y }}
+                            style={{
+                                opacity,
+                                y,
+                                zIndex: isScrolledBeyond ? -1 : 1, // 스크롤 범위 벗어나면 z-index를 -1로
+                            }}
                             transition={{ duration: 0.6, ease: "easeInOut" }}>
                             {text}
                         </StyledMotionText>
@@ -67,6 +86,7 @@ const TextContainer = styled.div`
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
+    z-index: 1;
 `;
 
 const StyledMotionText = styled(motion.p)`
@@ -79,7 +99,7 @@ const StyledMotionText = styled(motion.p)`
     margin: 0;
     font-weight: bold;
     opacity: 0; /* 시작 시 투명하게 설정 */
-
+    font-size: 1.5rem;
     @media (max-width: 768px) {
         font-size: 1.2rem;
     }

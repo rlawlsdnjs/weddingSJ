@@ -9,6 +9,9 @@ import { CARD_ARRAY } from "./constants/CARD_ARRAY";
 import MusicPlayer from "./components/MusicPlayer";
 import InvitationSection from "./components/InvitationSection";
 import bgm from "../public/wedding-251610.mp3";
+import Dday from "./components/Dday";
+import Transportation from "./components/cardContents/Transportation";
+import Share from "./components/Share";
 
 const INVITATION_TEXTS = [
     "화사한 봄날, 식목일에",
@@ -114,35 +117,55 @@ const App = () => {
                 </motion.div>
             </div>
             {/* 초대 섹션 컴포넌트 */}
-            <div ref={invitationSection}>
+            <div
+                ref={invitationSection}
+                style={{ position: "relative", zIndex: 2 }}>
                 <InvitationSection invitationTexts={INVITATION_TEXTS} />
             </div>
-
+            <div style={{ position: "relative", zIndex: 3 }}>
+                <Dday></Dday>
+            </div>
             {/* 카드 섹션 */}
-            <main ref={container} className="main-container">
-                {CARD_ARRAY.map((card, i) => {
-                    const scaleFactor = 0.04;
-                    const targetScale =
-                        1 - (CARD_ARRAY.length - i) * scaleFactor;
-                    return (
-                        <Card
-                            key={`p_${i}`}
-                            i={i}
-                            {...card}
-                            progress={boundedProgress}
-                            range={[i * 0.25, 1]}
-                            targetScale={targetScale}
-                            isVisible={hasScrolledPastIntro}
-                            id={`card-${i}`}
-                        />
-                    );
-                })}
-            </main>
-
-            {/* Footer 영역 */}
-            <footer className="footer">
-                <p>좋은 하루 되세요!</p>
-            </footer>
+            <div style={{ position: "relative", zIndex: 4 }}>
+                <main ref={container} className="main-container">
+                    {CARD_ARRAY.map((card, i) => {
+                        const scaleFactor = 0.03;
+                        const targetScale =
+                            1 - (CARD_ARRAY.length - i) * scaleFactor;
+                        return (
+                            <Card
+                                key={`p_${i}`}
+                                i={i}
+                                {...card}
+                                progress={boundedProgress}
+                                range={[i * 0.25, 1]}
+                                targetScale={targetScale}
+                                isVisible={hasScrolledPastIntro}
+                                id={`card-${i}`}
+                            />
+                        );
+                    })}
+                </main>
+            </div>
+            <div
+                style={{
+                    position: "relative",
+                    zIndex: 5,
+                    background:
+                        "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 238))",
+                }}>
+                <Transportation />
+            </div>
+            <div
+                style={{
+                    position: "relative",
+                    zIndex: 6,
+                    background:
+                        "linear-gradient(to bottom,  rgb(255, 238, 238),rgb(255, 238, 228))",
+                }}>
+                {/* Footer 영역 */}
+                <Share />
+            </div>
         </div>
     );
 };

@@ -1,55 +1,46 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# 💍 WeddingSJ - 모바일 웨딩 청첩장
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **✨ 소중한 순간을 더욱 특별하게 ✨**  
+> `framer-motion`, `lenis` 등을 활용한 감성적인 모바일 청첩장 프로젝트
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 프로젝트 개요
 
-## Expanding the ESLint configuration
+-   **프로젝트명**: WeddingSJ
+-   **목적**: 모바일에서 자연스럽고 부드러운 애니메이션을 활용한 웨딩 청첩장 구현
+-   **소요 기간**: 4일
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠 기술 스택
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+| 기술                   | 설명                 |
+| ---------------------- | -------------------- |
+| **React + TypeScript** | 프로젝트 기본 구조   |
+| **Vite**               | 빠른 개발 환경 구축  |
+| **Framer Motion**      | 애니메이션 효과 적용 |
+| **Lenis**              | 부드러운 스크롤 구현 |
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🎬 주요 기능
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-=======
-# weddingSJ
-웨딩 청첩장 프로젝트
->>>>>>> 9580d3917a8889486e62d437de3f5046da549752
+✅ **오프닝 애니메이션**
+
+-   `framer-motion`을 활용한 감성적인 오프닝 효과
+-   자연스러운 페이드 인/아웃
+
+✅ **부드러운 스크롤**
+
+-   `lenis`를 사용한 부드러운 페이지 전환
+-   자연스러운 스크롤 인터랙션
+
+✅ **필수 기능**
+
+-   공유하기
+-   갤러리
+-   배경음악
+-   카운트다운
+
+---

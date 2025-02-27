@@ -53,7 +53,7 @@ const CardTitle = styled.h2`
     margin: 0;
     font-size: 40px;
     padding-bottom: 15px;
-    font-family: "Noto Sans KR", serif;
+    font-family: "Nanum Myeongjo", serif;
     font-weight: 400;
     color: #666;
     letter-spacing: -0.08rem;

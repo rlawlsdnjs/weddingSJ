@@ -134,7 +134,7 @@ const Location: React.FC<LocationProps> = ({
     return (
         <Container>
             <AddressLocationTitle>
-                백석 CN웨딩홀 10층 그리다홀
+                천년컨벤션 웨딩홀 10층 그리다홀
             </AddressLocationTitle>
             <AddressText>{address}</AddressText>
             <AddressText>{subAddress}</AddressText>

@@ -53,9 +53,10 @@ const CardTitle = styled.h2`
     margin: 0;
     font-size: 40px;
     padding-bottom: 15px;
-    font-family: "Gowun Batang", serif;
-    font-weight: 700;
-    color: #000;
+    font-family: "Noto Sans KR", serif;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: -0.08rem;
     display: flex;
     position: relative;
     width: auto;

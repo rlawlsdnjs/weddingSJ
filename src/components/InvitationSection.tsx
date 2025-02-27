@@ -36,7 +36,6 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
 
     return (
         <StyledSection ref={sectionRef}>
-            <TextTitle>마음으로 전합니다.</TextTitle>
             <TextContainer>
                 {invitationTexts.map((text, index) => {
                     const appearStart = stepSize * index;

@@ -112,7 +112,14 @@ const App = () => {
                             <div className="intro-content-bottom">
                                 <div className="intro-content-main-text">
                                     <h3>
-                                        <span>김진원 </span> <span>|</span>
+                                        <span>김진원 </span>
+                                        <span
+                                            style={{
+                                                fontSize: "15px",
+                                                color: "coral",
+                                            }}>
+                                            ♥︎
+                                        </span>
                                         <span>박소라</span>
                                     </h3>
                                     <span>

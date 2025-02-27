@@ -47,7 +47,7 @@ const Opening = ({ onFinish }: OpeningProps) => {
                     fontSize: "1rem",
                     fontWeight: "bold",
                     color: "#333",
-                    fontFamily: "Nanum Myeongjo, serif",
+                    fontFamily: "Noto  Myeongjo, serif",
                 }}>
                 화사한 봄날, 진원 & 소라
             </motion.h1>

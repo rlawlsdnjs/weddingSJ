@@ -36,6 +36,7 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
 
     return (
         <StyledSection ref={sectionRef}>
+            <TextTitle>마음으로 전합니다.</TextTitle>
             <TextContainer>
                 {invitationTexts.map((text, index) => {
                     const appearStart = stepSize * index;
@@ -77,6 +78,17 @@ const StyledSection = styled.section`
 
     position: relative;
     overflow: hidden;
+`;
+
+const TextTitle = styled.h2`
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    z-index: 99;
+    transform: translateX(-50%);
+    font-weight: bold;
 `;
 
 const TextContainer = styled.div`

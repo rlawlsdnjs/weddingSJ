@@ -66,7 +66,13 @@ const TransportationTitle = styled.h2`
 `;
 
 const Section = styled.div`
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+        border: none;
+    }
 `;
 
 const Heading = styled.h3`

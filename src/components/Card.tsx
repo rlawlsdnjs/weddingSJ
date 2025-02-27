@@ -13,6 +13,7 @@ interface CardProps {
     isVisible: boolean;
     childrenNode?: ReactNode;
     id: string;
+    icon: string;
 }
 
 // Styled Components
@@ -55,9 +56,23 @@ const CardTitle = styled.h2`
     font-family: "Gowun Batang", serif;
     font-weight: 700;
     color: #000;
+    display: flex;
+    position: relative;
+    width: auto;
+    justify-content: center;
     @media (max-width: 768px) {
         font-size: 30px;
     }
+`;
+
+const CardIcon = styled.span`
+    font-size: 20px;
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.4;
+    filter: blur(0.3px);
 `;
 
 const CardBody = styled.div`
@@ -131,6 +146,7 @@ const Card: React.FC<CardProps> = ({
     isVisible,
     childrenNode,
     id,
+    icon,
 }) => {
     const container = useRef(null);
 
@@ -155,7 +171,16 @@ const Card: React.FC<CardProps> = ({
                     isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 30 } // 두 상태 모두 y: 0으로 설정
                 }
                 transition={{ duration: 0, delay: i * 0.1 }}>
-                <CardTitle>{title}</CardTitle>
+                <CardTitle>
+                    <div
+                        style={{
+                            position: "relative",
+                            width: "max-content",
+                        }}>
+                        <CardIcon>{icon}</CardIcon>
+                        {title}
+                    </div>
+                </CardTitle>
                 <CardBody>
                     <Description>{childrenNode}</Description>
                     {/* <ImageContainer>

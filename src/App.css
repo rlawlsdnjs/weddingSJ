@@ -58,6 +58,7 @@
   text-align: center;
   color: white;
   max-width: 100%;
+  width:100%;
   min-width: 90%;
   height: 100dvh;
 }
@@ -215,10 +216,8 @@
 
 .wedding-text {
   position: absolute;
-  top: 30%; /* 요소의 상단을 부모의 50% 위치로 설정 */
-  left:50%;
-  transform: translateX(-50%);
-  width: 100%;
+  top: 52%; /* 요소의 상단을 부모의 50% 위치로 설정 */
+  right:5%;
 }
 /* 개별 글자 스타일 */
 .wedding-text span {
@@ -226,7 +225,7 @@
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
   font-family: "Parisienne", cursive; /* 우아한 필기체 */
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   font-weight:900;
   color: rgb(12, 13, 2);
 }

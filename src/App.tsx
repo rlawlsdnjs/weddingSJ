@@ -161,6 +161,7 @@ const App = () => {
                                         targetScale={targetScale}
                                         isVisible={hasScrolledPastIntro}
                                         id={`card-${i}`}
+                                        icon={card.icon}
                                     />
                                 );
                             })}

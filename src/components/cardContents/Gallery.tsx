@@ -1,44 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 // 이미지들 import
 import img1 from "../../../public/mainImage-min.jpg";
-import img2 from "../../../public/19_BS_K3160-min.jpg";
-import img3 from "../../../public/20_BS_K3282-2-min.jpg";
-import img4 from "../../../public/20_BS_K3334-min.jpg";
-import img5 from "../../../public/21_BS_K3237-min.jpg";
-import img6 from "../../../public/24_BS_K1892-2-min.jpg";
-import img7 from "../../../public/25_BS_K1920-min.jpg";
-import img8 from "../../../public/26_BS_K1852-2-min.jpg";
-import img9 from "../../../public/28_BS_K2198-min.jpg";
+import img2 from "../../../public/02.03_BS_K2251-2.jpg";
+import img3 from "../../../public/04_BS_K2356-2.jpg";
+import img4 from "../../../public/05_BS_K2284-2.jpg";
+import img5 from "../../../public/10.11_BS_K2511-2.jpg";
+import img6 from "../../../public/12_BS_K2548-2.jpg";
+import img7 from "../../../public/13_BS_K2574-2.jpg";
+import img8 from "../../../public/14_BS_K2741-2.jpg";
+import img10 from "../../../public/15_BS_K2762-2.jpg";
+import img11 from "../../../public/16_BS_K2892.jpg";
+import img12 from "../../../public/17_BS_K2835.jpg";
+import img13 from "../../../public/18_BS_K3136.jpg";
+import img14 from "../../../public/19_BS_K3160.jpg";
+import img15 from "../../../public/20_BS_K3282-2.jpg";
+import img16 from "../../../public/20_BS_K3334.jpg";
+import img17 from "../../../public/21_BS_K3237.jpg";
+import img18 from "../../../public/22.23_BS_K3554.jpg";
+import img19 from "../../../public/24_BS_K1892-2.jpg";
+import img20 from "../../../public/25_BS_K1920.jpg";
+import img21 from "../../../public/26_BS_K1852-2.jpg";
+import img22 from "../../../public/27_BS_K2078.jpg";
+import img23 from "../../../public/28_BS_K2198.jpg";
+import img24 from "../../../public/29.07_BS_K2448-2.jpg";
+import img25 from "../../../public/30_1_BS_K2460-2.jpg";
+import img26 from "../../../public/31_2_BS_K2476-2.jpg";
+import img27 from "../../../public/32_1_BS_K2467-2.jpg";
+import img28 from "../../../public/33_2_BS_K2478_2.jpg";
 
 // 스타일 설정
 const GalleryWrap = styled.div`
     position: relative;
     height: 100%;
+    width: 100%;
+    padding: 0 15px;
 `;
 
-const GalleryContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+const MasonryContainer = styled.div`
+    column-count: 3;
+    column-gap: 15px;
     width: 100%;
-    height: 100%;
+`;
+
+const MasonryItem = styled.div`
+    break-inside: avoid;
+    margin-bottom: 15px;
     position: relative;
 `;
 
 const GalleryImage = styled.img`
     width: 100%;
     height: auto;
-    object-fit: cover;
+    display: block;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s ease;
 
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 `;
 
@@ -69,35 +93,102 @@ const Button = styled.div<ButtonProps>`
     transform: translateY(-50%);
     font-size: 2rem;
     color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 9999;
     opacity: 0.7;
-    transition: opacity 0.3s;
+    transition:
+        opacity 0.3s,
+        background-color 0.3s;
 
     &:hover {
         opacity: 1;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 
     ${(props) =>
         props.left &&
         `
-        left: 10px;
+        left: 20px;
     `}
 
     ${(props) =>
         props.right &&
         `
-        right: 10px;
+        right: 20px;
     `}
 `;
+
+// 이미지 인터페이스
+interface ImageDimensions {
+    width: number;
+    height: number;
+}
 
 const Gallery: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState<string | null>(null);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [imagesLoaded, setImagesLoaded] = useState(false);
 
     // 이미지 import 배열
-    const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+    const images = [
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        img6,
+        img7,
+        img8,
+        img10,
+        img11,
+        img12,
+        img13,
+        img14,
+        img15,
+        img16,
+        img17,
+        img18,
+        img19,
+        img20,
+        img21,
+        img22,
+        img23,
+        img24,
+        img25,
+        img26,
+        img27,
+        img28,
+    ];
+
+    // 이미지 preload 처리
+    useEffect(() => {
+        let loadedImages = 0;
+
+        images.forEach((src: string) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    setImagesLoaded(true);
+                }
+            };
+            img.onerror = () => {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    setImagesLoaded(true);
+                }
+            };
+        });
+    }, []);
 
     const openModal = (index: number) => {
         setCurrentIndex(index);
@@ -122,18 +213,43 @@ const Gallery: React.FC = () => {
         setCurrentImage(null);
     };
 
+    // 키보드 이벤트 처리
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (!isOpen) return;
+
+            if (e.key === "ArrowLeft") {
+                handlePrev();
+            } else if (e.key === "ArrowRight") {
+                handleNext();
+            } else if (e.key === "Escape") {
+                closeModal();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isOpen, currentIndex]);
+
+    if (!imagesLoaded) {
+        return <div>Loading gallery...</div>;
+    }
+
     return (
         <GalleryWrap>
-            <GalleryContainer>
+            <MasonryContainer>
                 {images.map((image, index) => (
-                    <GalleryImage
-                        key={index}
-                        src={image}
-                        alt={`Gallery Image ${index + 1}`}
-                        onClick={() => openModal(index)}
-                    />
+                    <MasonryItem key={index}>
+                        <GalleryImage
+                            src={image}
+                            alt={`Gallery Image ${index + 1}`}
+                            onClick={() => openModal(index)}
+                        />
+                    </MasonryItem>
                 ))}
-            </GalleryContainer>
+            </MasonryContainer>
 
             {/* 모달 */}
             <Modal
@@ -147,17 +263,19 @@ const Gallery: React.FC = () => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: "rgba(0,0,0,0.8)",
+                        backgroundColor: "rgba(0,0,0,0.9)",
                         zIndex: 9999,
                     },
                     content: {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
+                        justifyContent: "center",
                         padding: "0",
-                        backgroundColor: "rgba(255,255,255,0.8)",
+                        backgroundColor: "transparent",
+                        border: "none",
                         width: "90%",
-                        height: "80%",
+                        height: "90%",
                         maxWidth: "100%",
                         maxHeight: "100%",
                         margin: "0",

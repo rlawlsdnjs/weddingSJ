@@ -14,7 +14,6 @@ const Opening = ({ onFinish }: OpeningProps) => {
             exit={{ opacity: 0 }}
             transition={{
                 duration: 2, // 페이드 인 속도
-                delay: 2, // 화면에 머무르는 시간
                 exit: { duration: 3 }, // 페이드 아웃 속도
             }}
             onAnimationComplete={onFinish}

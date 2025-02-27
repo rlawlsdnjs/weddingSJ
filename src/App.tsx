@@ -30,7 +30,7 @@ const App = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsOpeningDone(true); // 1.5초 후에 메인 콘텐츠 로드
-        }, 1500); // 1.5초 후
+        }, 3000);
     }, []);
 
     const container = useRef<HTMLDivElement>(null);
@@ -116,9 +116,9 @@ const App = () => {
                                         <span>박소라</span>
                                     </h3>
                                     <span>
-                                        2025.04.05 SAT PM 12:30
+                                        2025.04.05 토 PM 12:30
                                         <br />
-                                        백석 CN웨딩 그리다홀
+                                        백석 CN웨딩홀 10층 그리다홀
                                     </span>
                                 </div>
                             </div>

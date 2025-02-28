@@ -101,7 +101,7 @@ const DayWrap = styled.div`
     font-family: "Nanum Myeongjo", serif;
     position: relative;
     z-index: 8;
-    background-color: #f9ffdf;
+    background-color: #f8fde0;
     color: #333;
 `;
 const DdayContainer = styled.div`

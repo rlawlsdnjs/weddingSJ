@@ -8,7 +8,7 @@ import mainImage from "../public/mainResizeImage.jpg";
 import { CARD_ARRAY } from "./constants/CARD_ARRAY";
 import MusicPlayer from "./components/MusicPlayer";
 import InvitationSection from "./components/InvitationSection";
-import bgm from "../public/wedding-251610.mp3";
+import bgm from "../public/mainBgm.mp3";
 import Dday from "./components/Dday";
 import Transportation from "./components/cardContents/Transportation";
 import Share from "./components/Share";
@@ -168,7 +168,6 @@ const App = () => {
                                         targetScale={targetScale}
                                         isVisible={hasScrolledPastIntro}
                                         id={`card-${i}`}
-                                        icon={card.icon}
                                     />
                                 );
                             })}

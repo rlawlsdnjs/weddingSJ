@@ -146,7 +146,6 @@ const Card: React.FC<CardProps> = ({
     isVisible,
     childrenNode,
     id,
-    icon,
 }) => {
     const container = useRef(null);
 

@@ -73,7 +73,7 @@ const InvitationSection: React.FC<InvitationSectionProps> = ({
 
 const StyledSection = styled.section`
     height: 300vh; /* 300vh로 높이 설정 */
-    background: linear-gradient(to bottom, #fff7d2, #f9ffdf 70%);
+    background: linear-gradient(to bottom, #fff9dc, #f8fde0 70%);
 
     position: relative;
     overflow: hidden;

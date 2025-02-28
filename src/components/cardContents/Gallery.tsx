@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 
 // 이미지들 import
 import img1 from "../../../public/mainImage-min.jpg";
@@ -28,7 +28,6 @@ import img22 from "../../../public/27_BS_K2078.jpg";
 import img23 from "../../../public/28_BS_K2198.jpg";
 import img24 from "../../../public/30_1_BS_K2460-2.jpg";
 import img25 from "../../../public/32_1_BS_K2467-2.jpg";
-
 import img26 from "../../../public/31_2_BS_K2476-2.jpg";
 import img27 from "../../../public/33_2_BS_K2478_2.jpg";
 import img28 from "../../../public/29.07_BS_K2448-2.jpg";
@@ -74,6 +73,12 @@ const ModalContainer = styled.div`
     padding: 10px;
     width: 100%;
     height: 100%;
+    position: relative;
+`;
+
+const ModalImageWrapper = styled.div`
+    position: relative;
+    display: inline-block;
 `;
 
 const ModalImage = styled.img`
@@ -86,12 +91,11 @@ const ModalImage = styled.img`
 interface ButtonProps {
     left?: boolean;
     right?: boolean;
+    close?: boolean;
 }
 
 const Button = styled.div<ButtonProps>`
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     font-size: 2rem;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
@@ -116,12 +120,23 @@ const Button = styled.div<ButtonProps>`
     ${(props) =>
         props.left &&
         `
+        top: 50%;
+        transform: translateY(-50%);
         left: 20px;
     `}
 
     ${(props) =>
         props.right &&
         `
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+    `}
+    
+    ${(props) =>
+        props.close &&
+        `
+        top: 20px;
         right: 20px;
     `}
 `;
@@ -197,13 +212,15 @@ const Gallery: React.FC = () => {
         setIsOpen(true);
     };
 
-    const handlePrev = () => {
+    const handlePrev = (e: React.MouseEvent) => {
+        e.stopPropagation();
         const prevIndex = (currentIndex - 1 + images.length) % images.length;
         setCurrentIndex(prevIndex);
         setCurrentImage(images[prevIndex]);
     };
 
-    const handleNext = () => {
+    const handleNext = (e: React.MouseEvent) => {
+        e.stopPropagation();
         const nextIndex = (currentIndex + 1) % images.length;
         setCurrentIndex(nextIndex);
         setCurrentImage(images[nextIndex]);
@@ -214,15 +231,20 @@ const Gallery: React.FC = () => {
         setCurrentImage(null);
     };
 
+    // 이미지 영역 클릭 시 이벤트 전파 중단
+    const handleImageClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
     // 키보드 이벤트 처리
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (!isOpen) return;
 
             if (e.key === "ArrowLeft") {
-                handlePrev();
+                handlePrev(e as unknown as React.MouseEvent);
             } else if (e.key === "ArrowRight") {
-                handleNext();
+                handleNext(e as unknown as React.MouseEvent);
             } else if (e.key === "Escape") {
                 closeModal();
             }
@@ -285,11 +307,19 @@ const Gallery: React.FC = () => {
                         transform: "translate(-50%, -50%)",
                     },
                 }}>
-                <ModalContainer>
+                <ModalContainer onClick={closeModal}>
+                    <Button close onClick={closeModal}>
+                        <FaTimes />
+                    </Button>
                     <Button left onClick={handlePrev}>
                         <FaArrowLeft />
                     </Button>
-                    <ModalImage src={currentImage || ""} alt="Modal Image" />
+                    <ModalImageWrapper onClick={handleImageClick}>
+                        <ModalImage
+                            src={currentImage || ""}
+                            alt="Modal Image"
+                        />
+                    </ModalImageWrapper>
                     <Button right onClick={handleNext}>
                         <FaArrowRight />
                     </Button>

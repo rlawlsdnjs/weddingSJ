@@ -26,11 +26,12 @@ import img20 from "../../../public/25_BS_K1920.jpg";
 import img21 from "../../../public/26_BS_K1852-2.jpg";
 import img22 from "../../../public/27_BS_K2078.jpg";
 import img23 from "../../../public/28_BS_K2198.jpg";
-import img24 from "../../../public/29.07_BS_K2448-2.jpg";
-import img25 from "../../../public/30_1_BS_K2460-2.jpg";
+import img24 from "../../../public/30_1_BS_K2460-2.jpg";
+import img25 from "../../../public/32_1_BS_K2467-2.jpg";
+
 import img26 from "../../../public/31_2_BS_K2476-2.jpg";
-import img27 from "../../../public/32_1_BS_K2467-2.jpg";
-import img28 from "../../../public/33_2_BS_K2478_2.jpg";
+import img27 from "../../../public/33_2_BS_K2478_2.jpg";
+import img28 from "../../../public/29.07_BS_K2448-2.jpg";
 
 // 스타일 설정
 const GalleryWrap = styled.div`

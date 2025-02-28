@@ -18,13 +18,11 @@ interface CardProps {
 // 프로젝트 배열
 export const CARD_ARRAY: CardProps[] = [
     {
-        icon: "🌿",
         title: "Gallery",
         color: "linear-gradient(to bottom, #f5fbe8 10%, #ffffff 90%)", // 연한 레몬그린 (싱그러운 봄 느낌)
         childrenNode: <Gallery />,
     },
     {
-        icon: "🌸",
         title: "마음 전하실 곳",
         color: "linear-gradient(to bottom, #fefaf0 10%, #ffffff 90%)", // 연한 크림 베이지 (따뜻하고 부드러운 느낌)
         childrenNode: (
@@ -41,14 +39,13 @@ export const CARD_ARRAY: CardProps[] = [
         ),
     },
     {
-        icon: "🌷",
         title: "Location",
         color: "linear-gradient(to bottom, #eafbee 10%, #ffffff 90%)", // 연한 민트색 (봄의 신선한 느낌)
         childrenNode: (
             <Location
                 address="경기도 고양시 일산동구 중앙로 1080, 10층"
                 subAddress="(백석동 1288-2)"
-                placeName="천년컨벤션웨딩홀"
+                placeName="천년컨벤션 웨딩홀"
                 phoneNumber="031-811-7000"
             />
         ),

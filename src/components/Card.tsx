@@ -13,7 +13,6 @@ interface CardProps {
     isVisible: boolean;
     childrenNode?: ReactNode;
     id: string;
-    icon: string;
 }
 
 // Styled Components
@@ -178,7 +177,6 @@ const Card: React.FC<CardProps> = ({
                             position: "relative",
                             width: "max-content",
                         }}>
-                        <CardIcon>{icon}</CardIcon>
                         {title}
                     </div>
                 </CardTitle>

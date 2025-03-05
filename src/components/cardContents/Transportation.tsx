@@ -47,7 +47,7 @@ const Transportation = () => {
                         <br />
                         이용 시 웨딩홀 셔틀버스 운영
                     </ListItem>
-                    <ListItem>가급적 대중교통 이용을 권장 드립니다.</ListItem>
+                    <ListItem>가급적 대중교통 이용 권장</ListItem>
                 </List>
             </Section>
         </TransportationWrap>
@@ -58,7 +58,7 @@ export default Transportation;
 
 const TransportationWrap = styled.div`
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.8rem;
+    word-spacing: -0.6rem;
     color: #666;
     padding: 0 20px;
 `;

@@ -44,7 +44,30 @@ const Dday = () => {
         <DayWrap>
             <DdayContainer>
                 <img style={{ width: "25px" }} src={grass} />
-
+                <div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            gap: "2rem",
+                            marginBottom: "10px",
+                        }}>
+                        <div>
+                            김철규, 김혜자의
+                            <br />
+                            아들
+                            <br />
+                            김진원
+                        </div>
+                        <div>
+                            박기준, 이수민의
+                            <br />
+                            딸
+                            <br />
+                            박소라
+                        </div>
+                    </div>
+                </div>
                 <DdayTitle>결혼식까지</DdayTitle>
                 <CountdownWrapper>
                     <div>
@@ -92,13 +115,14 @@ const Dday = () => {
 export default Dday;
 
 const DayWrap = styled.div`
-    height: 50dvh;
+    height: 70dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-family: "Nanum Myeongjo", serif;
+    word-spacing: -0.8rem;
     position: relative;
     z-index: 8;
     background-color: #f8fde0;
@@ -107,6 +131,7 @@ const DayWrap = styled.div`
 const DdayContainer = styled.div`
     text-align: center;
     font-family: "Nanum Myeongjo", serif;
+    word-spacing: -0.8rem;
     color: #333;
 `;
 

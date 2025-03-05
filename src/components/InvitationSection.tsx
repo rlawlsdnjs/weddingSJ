@@ -81,6 +81,7 @@ const StyledSection = styled.section`
 
 const TextTitle = styled.h2`
     font-family: "Nanum Myeongjo", serif;
+    word-spacing: -0.8rem;
     font-size: 1.2rem;
     position: absolute;
     top: 200px;
@@ -102,6 +103,7 @@ const TextContainer = styled.div`
 
 const StyledMotionText = styled(motion.p)`
     font-family: "Nanum Myeongjo", serif;
+    word-spacing: -0.8rem;
     color: rgb(51, 51, 51);
     text-align: center;
     letter-spacing: 0em;

@@ -63,6 +63,7 @@ const ShareWrapper = styled.div`
     padding-top: 100px;
     width: 100%;
     font-family: "Nanum Myeongjo", serif;
+    word-spacing: -0.8rem;
 `;
 const ShareTitle = styled.h3`
     text-align: center;

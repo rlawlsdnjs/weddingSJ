@@ -564,9 +564,9 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof n.getDerivedStat
     font-size: 14px;
     color: #666;
     margin-top: 8px;
-`,L_=()=>D.jsxs(B_,{children:[D.jsx(V_,{children:"오시는 길"}),D.jsxs(cf,{children:[D.jsx(ff,{children:"지하철"}),D.jsxs(df,{children:[D.jsx($e,{children:"3호선 백석역 5번출구(150m)"}),D.jsxs($e,{children:["LG전자 베스트샵 지나 정면건물",D.jsx("br",{}),"(남정골드프라자 10층)"]})]})]}),D.jsxs(cf,{children:[D.jsx(ff,{children:"버스"}),D.jsxs(df,{children:[D.jsx($e,{children:"일반 : 05,8, 66, 76, 88, 90, 95, 96, 150, 780"}),D.jsx($e,{children:"좌석 : 108, 770, 830, 871"}),D.jsx($e,{children:"직행 : 200, 3300, 8109, 8407, 9700"}),D.jsx($e,{children:"B : 700, R : 9707, 9711, G : 7727, M : 7412"})]})]}),D.jsxs(cf,{children:[D.jsx(ff,{children:"자가용"}),D.jsxs(df,{children:[D.jsx($e,{children:"2시간 무료(이후 발생하는 요금은 개별 정산)"}),D.jsx($e,{children:"1. 네비게이션 - 천년컨벤션웨딩홀 또는 CN천년웨딩홀 일산점"}),D.jsxs($e,{children:["2. 천년컨벤션 웨딩홀 상가 1층, 지하 1,2층",D.jsx("br",{})," 주차장 만차 시 주차요원의 안내에 따라 이동"]}),D.jsxs($e,{children:["3. 외부 주차장(고양터미널 지하 4층)",D.jsx("br",{}),"이용 시 웨딩홀 셔틀버스 운영"]}),D.jsx($e,{children:"가급적 대중교통 이용을 권장 드립니다."})]})]})]}),B_=ut.div`
+`,L_=()=>D.jsxs(B_,{children:[D.jsx(V_,{children:"오시는 길"}),D.jsxs(cf,{children:[D.jsx(ff,{children:"지하철"}),D.jsxs(df,{children:[D.jsx($e,{children:"3호선 백석역 5번출구(150m)"}),D.jsxs($e,{children:["LG전자 베스트샵 지나 정면건물",D.jsx("br",{}),"(남정골드프라자 10층)"]})]})]}),D.jsxs(cf,{children:[D.jsx(ff,{children:"버스"}),D.jsxs(df,{children:[D.jsx($e,{children:"일반 : 05,8, 66, 76, 88, 90, 95, 96, 150, 780"}),D.jsx($e,{children:"좌석 : 108, 770, 830, 871"}),D.jsx($e,{children:"직행 : 200, 3300, 8109, 8407, 9700"}),D.jsx($e,{children:"B : 700, R : 9707, 9711, G : 7727, M : 7412"})]})]}),D.jsxs(cf,{children:[D.jsx(ff,{children:"자가용"}),D.jsxs(df,{children:[D.jsx($e,{children:"2시간 무료(이후 발생하는 요금은 개별 정산)"}),D.jsx($e,{children:"1. 네비게이션 - 천년컨벤션웨딩홀 또는 CN천년웨딩홀 일산점"}),D.jsxs($e,{children:["2. 천년컨벤션 웨딩홀 상가 1층, 지하 1,2층",D.jsx("br",{})," 주차장 만차 시 주차요원의 안내에 따라 이동"]}),D.jsxs($e,{children:["3. 외부 주차장(고양터미널 지하 4층)",D.jsx("br",{}),"이용 시 웨딩홀 셔틀버스 운영"]}),D.jsx($e,{children:"가급적 대중교통 이용 권장"})]})]})]}),B_=ut.div`
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.8rem;
+    word-spacing: -0.6rem;
     color: #666;
     padding: 0 20px;
 `,V_=ut.h2`

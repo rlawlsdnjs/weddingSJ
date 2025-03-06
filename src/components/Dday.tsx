@@ -10,7 +10,7 @@ const Dday = () => {
         minutes: 0,
         seconds: 0,
     });
-    const externalRef = useRef(null); // 외동딸 요소를 참조
+    const externalRef = useRef<HTMLSpanElement | null>(null); // 외동딸 요소를 참조
     const [externalSize, setExternalSize] = useState(0); // 외동딸의 크기 저장
     useEffect(() => {
         // 외동딸 크기 계산

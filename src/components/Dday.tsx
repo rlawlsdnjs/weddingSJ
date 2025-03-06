@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion"; // 플립 애니메이션 효과
 import grass from "../../public/grasss.png";
@@ -10,7 +10,14 @@ const Dday = () => {
         minutes: 0,
         seconds: 0,
     });
-
+    const externalRef = useRef(null); // 외동딸 요소를 참조
+    const [externalSize, setExternalSize] = useState(0); // 외동딸의 크기 저장
+    useEffect(() => {
+        // 외동딸 크기 계산
+        if (externalRef.current) {
+            setExternalSize(externalRef.current.offsetWidth); // 외동딸의 너비를 저장
+        }
+    }, [timeLeft]); // 타이머가 업데이트될 때마다 외동딸의 크기를 다시 계산
     useEffect(() => {
         const weddingDate = new Date("2025-04-05T00:00:00");
 
@@ -43,34 +50,72 @@ const Dday = () => {
     return (
         <DayWrap>
             <DdayContainer>
-                <img style={{ width: "25px" }} src={grass} />
-                <div>
+                <img
+                    style={{ width: "25px", marginBottom: "20px" }}
+                    src={grass}
+                />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "20px",
+                    }}>
                     <div
                         style={{
-                            display: "flex",
                             justifyContent: "center",
-                            gap: "2rem",
-                            marginBottom: "10px",
+                            alignItems: "center",
+                            display: "flex",
+                            gap: "10px",
                         }}>
-                        <div>
-                            김철규, 김혜자의
+                        <div style={{ fontWeight: "bold" }}>
+                            김철규
                             <br />
-                            아들
-                            <br />
-                            김진원
+                            김혜자
                         </div>
-                        <div>
-                            박기준, 이수민의
+                        <div
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                                display: "flex",
+                                gap: "10px",
+                            }}>
+                            <span>의</span>
+
+                            <span style={{ width: `${externalSize}px` }}>
+                                장남
+                            </span>
+
+                            <span style={{ fontWeight: "bold" }}>진원</span>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            justifyContent: "center",
+                            alignItems: "center",
+                            display: "flex",
+                            gap: "10px",
+                        }}>
+                        <div style={{ fontWeight: "bold" }}>
+                            박기준
                             <br />
-                            딸
-                            <br />
-                            박소라
+                            이수민
+                        </div>
+                        <div
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                                display: "flex",
+                                gap: "10px",
+                            }}>
+                            <span>의</span>
+                            <span ref={externalRef}>외동딸</span>
+                            <span style={{ fontWeight: "bold" }}>소라</span>
                         </div>
                     </div>
                 </div>
                 <DdayTitle>결혼식까지</DdayTitle>
                 <CountdownWrapper>
-                    <div>
+                    <FlipBoxWrap>
                         <FlipBox
                             initial={{ rotateX: 90 }}
                             animate={{ rotateX: 0 }}
@@ -78,8 +123,8 @@ const Dday = () => {
                             <Number>{timeLeft.days}</Number>
                         </FlipBox>
                         <Label>일</Label>
-                    </div>
-                    <div>
+                    </FlipBoxWrap>
+                    <FlipBoxWrap>
                         <FlipBox
                             initial={{ rotateX: 90 }}
                             animate={{ rotateX: 0 }}
@@ -87,8 +132,8 @@ const Dday = () => {
                             <Number>{timeLeft.hours}</Number>
                         </FlipBox>
                         <Label>시간</Label>
-                    </div>
-                    <div>
+                    </FlipBoxWrap>
+                    <FlipBoxWrap>
                         <FlipBox
                             initial={{ rotateX: 90 }}
                             animate={{ rotateX: 0 }}
@@ -96,8 +141,8 @@ const Dday = () => {
                             <Number>{timeLeft.minutes}</Number>
                         </FlipBox>
                         <Label>분</Label>
-                    </div>
-                    <div>
+                    </FlipBoxWrap>
+                    <FlipBoxWrap>
                         <FlipBox
                             initial={{ rotateX: 90 }}
                             animate={{ rotateX: 0 }}
@@ -105,7 +150,7 @@ const Dday = () => {
                             <Number>{timeLeft.seconds}</Number>
                         </FlipBox>
                         <Label>초</Label>
-                    </div>
+                    </FlipBoxWrap>
                 </CountdownWrapper>
             </DdayContainer>
         </DayWrap>
@@ -139,12 +184,18 @@ const DdayTitle = styled.p`
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 12px;
+    margin-top: 40px;
 `;
 
 const CountdownWrapper = styled.div`
     display: flex;
     justify-content: center;
     gap: 6px;
+`;
+const FlipBoxWrap = styled.div`
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
 `;
 
 const FlipBox = styled(motion.div)`
@@ -172,5 +223,4 @@ const Number = styled.span`
 const Label = styled.span`
     font-size: 14px;
     color: #666;
-    margin-top: 8px;
 `;

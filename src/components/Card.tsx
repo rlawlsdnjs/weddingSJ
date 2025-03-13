@@ -10,6 +10,7 @@ interface CardProps {
     isVisible: boolean;
     childrenNode?: ReactNode;
     id: string;
+    boundedProgress: number;
 }
 
 // Styled Components
@@ -85,6 +86,7 @@ const Card: React.FC<CardProps> = ({
     isVisible,
     childrenNode,
     id,
+    boundedProgress,
 }) => {
     return (
         <CardContainer id={id}>

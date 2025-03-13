@@ -129,7 +129,7 @@ const App = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="scroll-indicator">
+                            {/* <div className="scroll-indicator">
                                 <div className="scroll-dots">
                                     {[...Array(6)].map((_, i) => (
                                         <span
@@ -139,7 +139,7 @@ const App = () => {
                                         </span>
                                     ))}
                                 </div>
-                            </div>
+                            </div> */}
                         </motion.div>
                     </div>
                     {/* 초대 섹션 컴포넌트 */}

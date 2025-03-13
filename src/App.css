@@ -44,7 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #ffffff 60%, #fffae4 90%);
+  background: linear-gradient(to bottom, #ffffff 60%, #fff9dc 90%);
 
   position: relative;
   z-index: 10;
@@ -212,6 +212,7 @@
 
 .main-container {
   background: linear-gradient(to bottom,  #f8fde0,rgb(255, 238, 238));
+  padding-bottom:80px;
 }
 
 

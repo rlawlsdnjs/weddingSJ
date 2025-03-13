@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 import { ReactNode } from "react";
 import styled from "styled-components";
 
@@ -10,7 +10,9 @@ interface CardProps {
     isVisible: boolean;
     childrenNode?: ReactNode;
     id: string;
-    progress: number;
+    progress: number | MotionValue<number>;
+    range: number[]; // range 추가
+    targetScale: number; // targetScale 추가
 }
 
 // Styled Components

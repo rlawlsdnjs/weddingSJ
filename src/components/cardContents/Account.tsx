@@ -20,7 +20,6 @@ const SectionTitle = styled.h3<{ isGroom: boolean }>`
         isGroom ? "#000987" : "#750000"}; /* 연한 파랑, 연한 핑크 */
     padding: 3px 10px;
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.8rem;
     & > span {
         margin-top: 2px;
     }

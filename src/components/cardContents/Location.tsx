@@ -19,14 +19,12 @@ const AddressLocationTitle = styled.h3`
     color: #333;
     margin-bottom: 3px;
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.8rem;
     font-weight: 600;
 `;
 const AddressText = styled.p`
     font-size: 14px;
     color: #333;
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.8rem;
 `;
 
 const ButtonContainer = styled.div`

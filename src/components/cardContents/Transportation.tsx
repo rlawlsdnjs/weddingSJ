@@ -58,7 +58,6 @@ export default Transportation;
 
 const TransportationWrap = styled.div`
     font-family: "Nanum Myeongjo", serif;
-    word-spacing: -0.6rem;
     color: #666;
     padding: 0 20px;
 `;

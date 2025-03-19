@@ -27,6 +27,7 @@ const Opening = ({ onFinish }: OpeningProps) => {
                 width: "100dvw",
                 height: "100dvh",
                 textAlign: "center",
+                maxWidth: "500px",
             }}>
             {/* 이미지 애니메이션 */}
             <motion.img
